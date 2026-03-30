@@ -356,7 +356,7 @@ export function ApplicationFlow({ selectedCourse, isOpen, onClose }: Application
 
       <div className="bg-neutral-50 dark:bg-neutral-800 p-6 rounded-2xl border border-neutral-100 dark:border-neutral-700 mb-8 max-w-sm mx-auto">
          <div className="flex justify-between items-center mb-3">
-            <span className="text-sm text-neutral-500 font-medium">Course Fee</span>
+            <span className="text-sm text-neutral-500 font-medium">Course fee Per first semester</span>
             <span className="font-bold dark:text-white">{activeCourse?.price}</span>
          </div>
          <div className="flex justify-between items-center border-t border-neutral-200 dark:border-neutral-700 pt-3">
