@@ -42,7 +42,7 @@ export function Navbar({ onApplyClick }: { onApplyClick?: () => void }) {
           <span className={`text-xl font-bold transition-colors ${
             isScrolled ? "text-brand-text-primary dark:text-white" : "text-white drop-shadow-md"
           }`}>
-            KM Media
+            KM Media <br /> Training Institute  
           </span>
         </Link>
 

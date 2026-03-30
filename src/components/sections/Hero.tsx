@@ -7,31 +7,44 @@ import { GraduationCap, ArrowRight, CheckCircle } from "lucide-react";
 
 export function Hero() {
   const [index, setIndex] = useState(0);
-  const slides = [
-    {
-      main: "Master the Art of",
-      accent: "Modern Media."
-    },
-    {
-      main: "Lead the World of",
-      accent: "Creative Design."
-    },
-    {
-      main: "Shape the Future of",
-      accent: "Modern Fashion."
-    },
-    {
-      main: "Master Your Path in",
-      accent: "Digital Skills."
-    }
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [typingSpeed, setTypingSpeed] = useState(100);
+
+  const typedSlides = [
+    "Master the Art of|Modern Media.",
+    "Lead the World of|Creative Design.",
+    "Shape the Future of|Modern Fashion.",
+    "Master Your Path in|Digital Skills."
   ];
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % slides.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, [slides.length]);
+    const currentSlide = typedSlides[index];
+    
+    const handleTyping = () => {
+      if (!isDeleting) {
+        setDisplayText(currentSlide.substring(0, displayText.length + 1));
+        setTypingSpeed(100);
+
+        if (displayText === currentSlide) {
+          setTypingSpeed(2000); // Wait before deleting
+          setIsDeleting(true);
+        }
+      } else {
+        setDisplayText(currentSlide.substring(0, displayText.length - 1));
+        setTypingSpeed(50);
+
+        if (displayText === "") {
+          setIsDeleting(false);
+          setIndex((prev: number) => (prev + 1) % typedSlides.length);
+          setTypingSpeed(500); // Wait before typing next
+        }
+      }
+    };
+
+    const timer = setTimeout(handleTyping, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting, index, typingSpeed, typedSlides]);
 
   const scrollToCourses = () => {
     const element = document.getElementById("courses");
@@ -39,6 +52,8 @@ export function Hero() {
         element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  const [mainPart, accentPart] = displayText.split("|");
 
   return (
     <section className="relative overflow-hidden bg-neutral-900 pt-32 pb-20 md:pt-48 md:pb-32 min-h-[90vh] flex flex-col items-center justify-center">
@@ -66,19 +81,14 @@ export function Hero() {
         </motion.div>
 
         <div className="h-[120px] md:h-[180px] lg:h-[220px] flex items-center justify-center w-full mb-8">
-          <AnimatePresence mode="wait">
-            <motion.h1
-              key={index}
-              initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              exit={{ opacity: 0, y: -30, filter: "blur(10px)" }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] max-w-4xl drop-shadow-lg text-center"
-            >
-              {slides[index].main} <br className="hidden md:block" />
-              <span className="text-brand-primary brightness-125">{slides[index].accent}</span>
-            </motion.h1>
-          </AnimatePresence>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] max-w-4xl drop-shadow-lg text-center">
+            {mainPart}
+            {mainPart && accentPart !== undefined && <br className="hidden md:block" />}
+            <span className="text-brand-primary brightness-125 min-h-[1em] inline-block">
+              {accentPart}
+              <span className="animate-pulse ml-1 inline-block w-[3px] h-[0.8em] bg-brand-primary align-middle" />
+            </span>
+          </h1>
         </div>
 
         <motion.p
