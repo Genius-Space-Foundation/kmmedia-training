@@ -17,7 +17,7 @@ export const courses: Course[] = [
     title: "Broadcast Journalism",
     description: "Master the art of storytelling for TV, radio, and digital platforms.",
     longDescription: "This comprehensive course covers everything from news gathering and scriptwriting to on-camera presentation and digital reporting. Students will gain hands-on experience in our state-of-the-art studio and learn from industry professionals.",
-    duration: "6 Months",
+    duration: "12 Months",
     category: "Media",
     requirements: [
       "WASSCE / SSCE Certificate",
@@ -143,7 +143,7 @@ export const courses: Course[] = [
     title: "Fashion Designing",
     description: "Learn the fundamentals of fashion design, pattern making, and garment construction.",
     longDescription: "Master the art of fashion creation. From conceptual sketching and fabric selection to advanced sewing techniques, you will learn how to bring your creative clothing designs to life under the guidance of industry experts.",
-    duration: "6 Months",
+    duration: "24 Months",
     category: "Fashion",
     requirements: [
       "Creativity and sense of style",

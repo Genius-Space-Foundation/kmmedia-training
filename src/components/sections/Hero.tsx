@@ -1,10 +1,38 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { GraduationCap, ArrowRight, Play, CheckCircle } from "lucide-react";
+import { GraduationCap, ArrowRight, CheckCircle } from "lucide-react";
 
 export function Hero() {
+  const [index, setIndex] = useState(0);
+  const slides = [
+    {
+      main: "Master the Art of",
+      accent: "Modern Media."
+    },
+    {
+      main: "Lead the World of",
+      accent: "Creative Design."
+    },
+    {
+      main: "Shape the Future of",
+      accent: "Modern Fashion."
+    },
+    {
+      main: "Master Your Path in",
+      accent: "Digital Skills."
+    }
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % slides.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [slides.length]);
+
   const scrollToCourses = () => {
     const element = document.getElementById("courses");
     if (element) {
@@ -37,15 +65,21 @@ export function Hero() {
           <span>Accredited Media Training Institute</span>
         </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] mb-10 max-w-4xl drop-shadow-lg"
-        >
-          Find Your Future <br className="hidden md:block" />
-          <span className="text-brand-primary brightness-125">Course Today</span>
-        </motion.h1>
+        <div className="h-[120px] md:h-[180px] lg:h-[220px] flex items-center justify-center w-full mb-8">
+          <AnimatePresence mode="wait">
+            <motion.h1
+              key={index}
+              initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              exit={{ opacity: 0, y: -30, filter: "blur(10px)" }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] max-w-4xl drop-shadow-lg text-center"
+            >
+              {slides[index].main} <br className="hidden md:block" />
+              <span className="text-brand-primary brightness-125">{slides[index].accent}</span>
+            </motion.h1>
+          </AnimatePresence>
+        </div>
 
         <motion.p
            initial={{ opacity: 0, y: 20 }}

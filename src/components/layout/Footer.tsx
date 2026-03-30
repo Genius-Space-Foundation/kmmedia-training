@@ -101,7 +101,7 @@ export function Footer() {
                 </div>
                 <div>
                   <p className="text-xs text-neutral-500 uppercase font-bold tracking-wider mb-1">Email</p>
-                  <a href="mailto:apply@kmmedia.edu.gh" className="text-sm font-medium hover:text-brand-primary">apply@kmmedia.edu.gh</a>
+                  <a href="mailto:kmradioonline2@gmail.com" className="text-sm font-medium hover:text-brand-primary">kmradioonline2@gmail.com</a>
                 </div>
               </li>
               <li className="flex items-start gap-4">
@@ -109,8 +109,9 @@ export function Footer() {
                   <Phone size={18} className="text-brand-primary" />
                 </div>
                 <div>
-                  <p className="text-xs text-neutral-500 uppercase font-bold tracking-wider mb-1">Phone</p>
+                  <p className="text-xs text-neutral-500 uppercase font-bold tracking-wider mb-1">KM MAIN OFFICE LINE</p>
                   <a href="tel:+233555587754" className="text-sm font-medium hover:text-brand-primary">+233555587754</a>
+                  <a href="tel:0362291034" className="text-sm font-medium hover:text-brand-primary"> / 0362291034</a>
                 </div>
               </li>
               <li className="flex items-start gap-4">
