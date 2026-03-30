@@ -10,7 +10,8 @@ export async function POST(req: Request) {
       name, email, phone, dob, pob, 
       nationality, hometown, religion, 
       gender, maritalStatus, occupation, 
-      address, course, reference 
+      address, course, reference,
+      guardianName, guardianPhone, guardianOccupation, guardianRelationship
     } = body;
 
     // Basic validation
@@ -29,9 +30,10 @@ export async function POST(req: Request) {
         <div style="font-family: sans-serif; max-width: 600px; margin: auto; border: 1px solid #eee; padding: 20px; border-radius: 10px;">
           <h2 style="color: #0994c4; border-bottom: 2px solid #0994c4; padding-bottom: 10px;">New Student Application</h2>
           
-          <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+          <h3 style="color: #444; margin-top: 25px; border-left: 4px solid #0994c4; padding-left: 10px;">Student Information</h3>
+          <table style="width: 100%; border-collapse: collapse;">
             <tr style="border-bottom: 1px solid #eee;">
-              <td style="padding: 10px; font-weight: bold; color: #555;">Full Name</td>
+              <td style="padding: 10px; font-weight: bold; color: #555; width: 40%;">Full Name</td>
               <td style="padding: 10px;">${name}</td>
             </tr>
             <tr style="border-bottom: 1px solid #eee;">
@@ -82,8 +84,32 @@ export async function POST(req: Request) {
               <td style="padding: 10px; font-weight: bold; color: #555;">Address</td>
               <td style="padding: 10px;">${address}</td>
             </tr>
+          </table>
+
+          <h3 style="color: #444; margin-top: 25px; border-left: 4px solid #0994c4; padding-left: 10px;">Parent / Guardian Information</h3>
+          <table style="width: 100%; border-collapse: collapse;">
+            <tr style="border-bottom: 1px solid #eee;">
+              <td style="padding: 10px; font-weight: bold; color: #555; width: 40%;">Guardian Name</td>
+              <td style="padding: 10px;">${guardianName}</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #eee;">
+              <td style="padding: 10px; font-weight: bold; color: #555;">Guardian Phone</td>
+              <td style="padding: 10px;">${guardianPhone}</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #eee;">
+              <td style="padding: 10px; font-weight: bold; color: #555;">Guardian Occupation</td>
+              <td style="padding: 10px;">${guardianOccupation}</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #eee;">
+              <td style="padding: 10px; font-weight: bold; color: #555;">Relationship</td>
+              <td style="padding: 10px;">${guardianRelationship}</td>
+            </tr>
+          </table>
+
+          <h3 style="color: #444; margin-top: 25px; border-left: 4px solid #0994c4; padding-left: 10px;">Payment Information</h3>
+          <table style="width: 100%; border-collapse: collapse;">
             <tr style="background-color: #f9f9f9;">
-              <td style="padding: 10px; font-weight: bold; color: #555;">Payment Reference</td>
+              <td style="padding: 10px; font-weight: bold; color: #555; width: 40%;">Payment Reference</td>
               <td style="padding: 10px; font-family: monospace;">${reference}</td>
             </tr>
           </table>

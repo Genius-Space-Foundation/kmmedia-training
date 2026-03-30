@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { usePaystackPayment } from "react-paystack";
 import { Course, courses } from "@/data/courses";
-import { X, CheckCircle, CreditCard, Send, User, Mail, Phone, ArrowRight, BookOpen, Calendar, MapPin, Flag, Users, Briefcase, Home, Heart } from "lucide-react";
+import { X, CheckCircle, CreditCard, Send, User, Mail, Phone, ArrowRight, BookOpen, Calendar, MapPin, Flag, Users, Briefcase, Home, Heart, ShieldHalf } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ApplicationFlowProps {
@@ -29,6 +29,10 @@ export function ApplicationFlow({ selectedCourse, isOpen, onClose }: Application
     maritalStatus: "",
     occupation: "",
     address: "",
+    guardianName: "",
+    guardianPhone: "",
+    guardianOccupation: "",
+    guardianRelationship: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -258,12 +262,80 @@ export function ApplicationFlow({ selectedCourse, isOpen, onClose }: Application
               onChange={e => setFormData({ ...formData, address: e.target.value })}
             />
           </div>
+
+          {/* Parent/Guardian Section */}
+          <div className="md:col-span-2 pt-6 border-t border-neutral-100 dark:border-neutral-800">
+            <h4 className="text-sm font-bold text-brand-text-primary dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+              <ShieldHalf className="w-4 h-4 text-brand-primary" />
+              Parent / Guardian Information
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="relative group">
+                <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+                <input
+                  type="text"
+                  placeholder="Guardian's Full Name"
+                  className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
+                  value={formData.guardianName}
+                  onChange={e => setFormData({ ...formData, guardianName: e.target.value })}
+                />
+              </div>
+              <div className="relative group">
+                <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+                <input
+                  type="tel"
+                  placeholder="Guardian's Phone Number"
+                  className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
+                  value={formData.guardianPhone}
+                  onChange={e => setFormData({ ...formData, guardianPhone: e.target.value })}
+                />
+              </div>
+              <div className="relative group">
+                <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+                <input
+                  type="text"
+                  placeholder="Guardian's Occupation"
+                  className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
+                  value={formData.guardianOccupation}
+                  onChange={e => setFormData({ ...formData, guardianOccupation: e.target.value })}
+                />
+              </div>
+              <div className="relative group">
+                <Users className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+                <input
+                  type="text"
+                  placeholder="Relationship (e.g. Father)"
+                  className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
+                  value={formData.guardianRelationship}
+                  onChange={e => setFormData({ ...formData, guardianRelationship: e.target.value })}
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       <button
         onClick={handleNext}
-        disabled={!formData.name || !formData.email || !formData.phone || !formData.dob || !formData.pob || !formData.nationality || !formData.hometown || !formData.religion || !formData.gender || !formData.maritalStatus || !formData.occupation || !formData.address || !activeCourse}
+        disabled={
+          !formData.name || 
+          !formData.email || 
+          !formData.phone || 
+          !formData.dob || 
+          !formData.pob || 
+          !formData.nationality || 
+          !formData.hometown || 
+          !formData.religion || 
+          !formData.gender || 
+          !formData.maritalStatus || 
+          !formData.occupation || 
+          !formData.address || 
+          !formData.guardianName || 
+          !formData.guardianPhone || 
+          !formData.guardianOccupation || 
+          !formData.guardianRelationship || 
+          !activeCourse
+        }
         className="w-full py-4 bg-brand-primary hover:bg-brand-secondary disabled:bg-neutral-300 dark:disabled:bg-neutral-700 text-white rounded-xl font-bold text-lg shadow-xl shadow-brand-primary/20 transition-all mt-6 flex items-center justify-center gap-2 group"
       >
         Continue to Payment
