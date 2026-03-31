@@ -60,7 +60,7 @@ export const courses: Course[] = [
     title: "Digital Marketing",
     description: "Grow brands using social media, SEO, and data-driven strategies.",
     longDescription: "In the digital age, marketing is essential. Learn how to create compelling campaigns, manage social media presence, optimize for search engines, and analyze data to drive growth and ROI.",
-    duration: "3 Months",
+    duration: "6 Months",
     category: "IT",
     requirements: [
       "Basic computer literacy",
@@ -81,7 +81,7 @@ export const courses: Course[] = [
     title: "Graphic Design",
     description: "Transform ideas into stunning visuals using industry-standard tools.",
     longDescription: "Master the principles of design, typography, and color theory. Learn to use Adobe Creative Suite (Photoshop, Illustrator, InDesign) to create professional logos, branding materials, and digital assets.",
-    duration: "4 Months",
+    duration: "6 Months",
     category: "Design",
     requirements: [
       "Creativity and eye for detail",
@@ -95,7 +95,7 @@ export const courses: Course[] = [
       "Freelance Designer"
     ],
     image: "/images/3.jpeg",
-    price: "GHS 2000.00"
+    price: "GHS 2,300.00"
   },
   {
     id: "web-development",
@@ -123,7 +123,7 @@ export const courses: Course[] = [
     title: "Video Editing",
     description: "Create compelling videos with professional editing and motion graphics.",
     longDescription: "Learn the art of post-production. Master Adobe Premiere Pro and After Effects to edit footage, add special effects, create motion graphics, and deliver high-quality video content for various platforms.",
-    duration: "4 Months",
+    duration: "6 Months",
     category: "Media",
     requirements: [
       "A good computer",
@@ -137,14 +137,14 @@ export const courses: Course[] = [
       "Post-production Supervisor"
     ],
     image: "/images/3.jpeg",
-    price: "GHS 3,000.00"
+    price: "GHS 3,200.00"
   },
   {
     id: "fashion-designing",
     title: "Fashion Designing",
     description: "Learn the fundamentals of fashion design, pattern making, and garment construction.",
     longDescription: "Master the art of fashion creation. From conceptual sketching and fabric selection to advanced sewing techniques, you will learn how to bring your creative clothing designs to life under the guidance of industry experts.",
-    duration: "24 Months",
+    duration: "2 Years 6 Months",
     category: "Fashion",
     requirements: [
       "Creativity and sense of style",
