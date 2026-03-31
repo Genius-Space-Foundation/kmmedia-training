@@ -17,12 +17,13 @@ export const courses: Course[] = [
     title: "Broadcast Journalism",
     description: "Master the art of storytelling for TV, radio, and digital platforms.",
     longDescription: "This comprehensive course covers everything from news gathering and scriptwriting to on-camera presentation and digital reporting. Students will gain hands-on experience in our state-of-the-art studio and learn from industry professionals.",
-    duration: "12 Months",
+    duration: "1 Year 6 Months",
     category: "Media",
     requirements: [
-      "WASSCE / SSCE Certificate",
+      "WASSCE / SSCE or any Certificate",
       "Good command of English",
-      "Passion for storytelling"
+      "Passion for storytelling",
+      "Matured applicants should be able to read, write and understand"
     ],
     opportunities: [
       "News Reporter",
@@ -52,7 +53,7 @@ export const courses: Course[] = [
       "Music Producer"
     ],
     image: "/images/3.jpeg",
-    price: "GHS 2,500.00"
+    price: "GHS 3200.00"
   },
   {
     id: "digital-marketing",
@@ -73,7 +74,7 @@ export const courses: Course[] = [
       "Content Marketer"
     ],
     image: "/images/3.jpeg",
-    price: "GHS 1,500.00"
+    price: "GHS 1,650.00"
   },
   {
     id: "graphic-design",
@@ -94,7 +95,7 @@ export const courses: Course[] = [
       "Freelance Designer"
     ],
     image: "/images/3.jpeg",
-    price: "GHS 1,800.00"
+    price: "GHS 2000.00"
   },
   {
     id: "web-development",
@@ -115,7 +116,7 @@ export const courses: Course[] = [
       "Web Architect"
     ],
     image: "/images/3.jpeg",
-    price: "GHS 2,500.00"
+    price: "GHS 2,800.00"
   },
   {
     id: "video-editing",
@@ -136,7 +137,7 @@ export const courses: Course[] = [
       "Post-production Supervisor"
     ],
     image: "/images/3.jpeg",
-    price: "GHS 1,800.00"
+    price: "GHS 3,000.00"
   },
   {
     id: "fashion-designing",
@@ -178,6 +179,6 @@ export const courses: Course[] = [
       "Screenwriter"
     ],
     image: "/images/3.jpeg",
-    price: "GHS 2,500.00"
+    price: "GHS 3,500.00"
   }
 ];
