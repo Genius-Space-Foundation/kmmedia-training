@@ -2,19 +2,19 @@
 
 import { useState, useEffect } from "react";
 import { usePaystackPayment } from "react-paystack";
-import { Course, courses } from "@/data/courses";
+import { Programme, programmes } from "@/data/courses";
 import { X, CheckCircle, CreditCard, Send, User, Mail, Phone, ArrowRight, BookOpen, Calendar, MapPin, Flag, Users, Briefcase, Home, Heart, ShieldHalf, GraduationCap } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ApplicationFlowProps {
-  selectedCourse: Course | null;
+  selectedProgramme: Programme | null;
   isOpen: boolean;
   onClose: () => void;
 }
 
 type Step = "form" | "payment" | "success";
 
-export function ApplicationFlow({ selectedCourse, isOpen, onClose }: ApplicationFlowProps) {
+export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: ApplicationFlowProps) {
   const [step, setStep] = useState<Step>("form");
   const [formData, setFormData] = useState({
     name: "",
@@ -39,13 +39,13 @@ export function ApplicationFlow({ selectedCourse, isOpen, onClose }: Application
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
-  const [activeCourse, setActiveCourse] = useState<Course | null>(selectedCourse);
+  const [activeProgramme, setActiveProgramme] = useState<Programme | null>(selectedProgramme);
 
   useEffect(() => {
     if (isOpen) {
-      setActiveCourse(selectedCourse);
+      setActiveProgramme(selectedProgramme);
     }
-  }, [selectedCourse, isOpen]);
+  }, [selectedProgramme, isOpen]);
 
   const handleNext = () => {
     if (step === "form") setStep("payment");
@@ -77,7 +77,7 @@ export function ApplicationFlow({ selectedCourse, isOpen, onClose }: Application
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
-          course: activeCourse?.title,
+          course: activeProgramme?.title,
           reference: reference,
         }),
       });
@@ -106,7 +106,7 @@ export function ApplicationFlow({ selectedCourse, isOpen, onClose }: Application
     <div className="space-y-6">
       <div className="text-center mb-10">
         <h3 className="text-2xl font-bold text-brand-text-primary dark:text-white mb-2">
-          {activeCourse ? `Join ${activeCourse.title}` : "Begin Your Application"}
+          {activeProgramme ? `Join ${activeProgramme.title}` : "Begin Your Application"}
         </h3>
         <p className="text-brand-text-secondary dark:text-neutral-400">Fill in your details to begin the enrollment process.</p>
       </div>
@@ -116,12 +116,12 @@ export function ApplicationFlow({ selectedCourse, isOpen, onClose }: Application
           <BookOpen className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-400" />
           <select
             className="w-full pl-12 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium appearance-none text-sm"
-            value={activeCourse ? activeCourse.id : ""}
-            onChange={e => setActiveCourse(courses.find(c => c.id === e.target.value) || null)}
+            value={activeProgramme ? activeProgramme.id : ""}
+            onChange={e => setActiveProgramme(programmes.find(p => p.id === e.target.value) || null)}
           >
-            <option value="" disabled>Select a Course</option>
-            {courses.map(course => (
-               <option key={course.id} value={course.id}>{course.title}</option>
+            <option value="" disabled>Select a Programme</option>
+            {programmes.map(programme => (
+               <option key={programme.id} value={programme.id}>{programme.title}</option>
             ))}
           </select>
         </div>
@@ -407,7 +407,7 @@ export function ApplicationFlow({ selectedCourse, isOpen, onClose }: Application
           !formData.educationLevel || 
           !formData.previousSchool || 
           !formData.completionYear || 
-          !activeCourse
+          !activeProgramme
         }
         className="w-full py-4 bg-brand-primary hover:bg-brand-secondary disabled:bg-neutral-300 dark:disabled:bg-neutral-700 text-white rounded-xl font-bold text-lg shadow-xl shadow-brand-primary/20 transition-all mt-6 flex items-center justify-center gap-2 group"
       >
@@ -429,8 +429,8 @@ export function ApplicationFlow({ selectedCourse, isOpen, onClose }: Application
 
       <div className="bg-neutral-50 dark:bg-neutral-800 p-6 rounded-2xl border border-neutral-100 dark:border-neutral-700 mb-8 max-w-sm mx-auto">
          <div className="flex justify-between items-center mb-3">
-            <span className="text-sm text-neutral-500 font-medium">Course fee Per first semester</span>
-            <span className="font-bold dark:text-white">{activeCourse?.price}</span>
+            <span className="text-sm text-neutral-500 font-medium">Programme fee Per first semester</span>
+            <span className="font-bold dark:text-white">{activeProgramme?.price}</span>
          </div>
          <div className="flex justify-between items-center border-t border-neutral-200 dark:border-neutral-700 pt-3">
             <span className="text-base font-bold text-brand-text-primary dark:text-white">To Pay Now</span>
@@ -481,7 +481,7 @@ export function ApplicationFlow({ selectedCourse, isOpen, onClose }: Application
         onClick={handleClose}
         className="px-8 py-4 bg-brand-primary hover:bg-brand-secondary text-white rounded-xl font-bold text-lg shadow-xl shadow-brand-primary/20 transition-all"
       >
-        Back to Courses
+        Back to Programmes
       </button>
     </div>
   );

@@ -19,7 +19,7 @@ export function Footer() {
   const footerLinks = {
     institute: [
       { name: "About Us", href: "#about" },
-      { name: "Our Courses", href: "#courses" },
+      { name: "Our Programmes", href: "#programmes" },
       { name: "Admissions", href: "#apply" },
       { name: "News & Events", href: "#" },
     ],

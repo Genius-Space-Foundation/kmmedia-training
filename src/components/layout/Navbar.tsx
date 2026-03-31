@@ -21,7 +21,7 @@ export function Navbar({ onApplyClick }: { onApplyClick?: () => void }) {
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Courses", href: "#courses" },
+    { name: "Programmes", href: "#programmes" },
     { name: "About Us", href: "#about" },
   ];
 

@@ -47,8 +47,8 @@ export function Hero() {
     return () => clearTimeout(timer);
   }, [displayText, isDeleting, index, typingSpeed, dynamicWords]);
 
-  const scrollToCourses = () => {
-    const element = document.getElementById("courses");
+  const scrollToProgrammes = () => {
+    const element = document.getElementById("programmes");
     if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
     }
@@ -105,10 +105,10 @@ export function Hero() {
            className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full"
         >
           <button
-            onClick={scrollToCourses}
+            onClick={scrollToProgrammes}
             className="w-full sm:w-auto px-10 py-4 bg-brand-primary hover:bg-brand-secondary text-white rounded-full font-bold text-lg flex items-center justify-center gap-2 transform transition-all hover:scale-105 shadow-xl hover:shadow-sm"
           >
-            Browse Courses
+            Browse Programmes
             <ArrowRight className="w-5 h-5" />
           </button>
         </motion.div>

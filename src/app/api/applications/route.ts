@@ -38,7 +38,7 @@ export async function POST(req: Request) {
               <td style="padding: 10px;">${name}</td>
             </tr>
             <tr style="border-bottom: 1px solid #eee;">
-              <td style="padding: 10px; font-weight: bold; color: #555;">Course</td>
+              <td style="padding: 10px; font-weight: bold; color: #555;">Programme</td>
               <td style="padding: 10px;">${course}</td>
             </tr>
             <tr style="border-bottom: 1px solid #eee;">

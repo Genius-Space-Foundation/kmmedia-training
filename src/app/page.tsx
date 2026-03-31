@@ -5,6 +5,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { CourseListing } from "@/components/sections/CourseListing";
 import { AboutUs } from "@/components/sections/AboutUs";
+import { Requirements } from "@/components/sections/Requirements";
 import { CourseModal } from "@/components/modals/CourseModal";
 import dynamic from "next/dynamic";
 
@@ -13,22 +14,22 @@ const ApplicationFlow = dynamic(
   { ssr: false }
 );
 import { Footer } from "@/components/layout/Footer";
-import { Course } from "@/data/courses";
+import { Programme } from "@/data/courses";
 import { motion } from "framer-motion";
 import { Rocket, GraduationCap, ArrowRight } from "lucide-react";
 
 export default function Home() {
-  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
+  const [selectedProgramme, setSelectedProgramme] = useState<Programme | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isApplicationOpen, setIsApplicationOpen] = useState(false);
 
-  const handleSelectCourse = (course: Course) => {
-    setSelectedCourse(course);
+  const handleSelectProgramme = (programme: Programme) => {
+    setSelectedProgramme(programme);
     setIsModalOpen(true);
   };
 
-  const handleApply = (course: Course) => {
-    setSelectedCourse(course);
+  const handleApply = (programme: Programme) => {
+    setSelectedProgramme(programme);
     setIsModalOpen(false);
     setIsApplicationOpen(true);
   };
@@ -37,14 +38,16 @@ export default function Home() {
     <main className="min-h-screen bg-white dark:bg-neutral-900 transition-colors duration-300">
       <Navbar 
         onApplyClick={() => {
-          setSelectedCourse(null);
+          setSelectedProgramme(null);
           setIsApplicationOpen(true);
         }} 
       />
       
       <Hero />
 
-      <CourseListing onSelectCourse={handleSelectCourse} />
+      <CourseListing onSelectProgramme={handleSelectProgramme} />
+
+      <Requirements />
 
       <AboutUs />
 
@@ -70,14 +73,14 @@ export default function Home() {
                <div className="pt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
                   <button
                     onClick={() => {
-                        const element = document.getElementById("courses");
+                        const element = document.getElementById("programmes");
                         if (element) {
                             element.scrollIntoView({ behavior: 'smooth' });
                         }
                     }}
                     className="w-full sm:w-auto px-10 py-4 bg-white text-brand-primary rounded-full font-bold text-lg shadow-2xl hover:bg-neutral-50 transition-all hover:-translate-y-1"
                   >
-                     Apply Now
+                     Explore Programmes
                   </button>
                   <button
                     className="w-full sm:w-auto px-10 py-4 border-2 border-white/30 text-white rounded-full font-bold text-lg hover:bg-white/10 transition-all"
@@ -93,14 +96,14 @@ export default function Home() {
 
       {/* Modals & Overlays */}
       <CourseModal 
-        course={selectedCourse}
+        programme={selectedProgramme}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onApply={handleApply}
       />
 
       <ApplicationFlow
-        selectedCourse={selectedCourse}
+        selectedProgramme={selectedProgramme}
         isOpen={isApplicationOpen}
         onClose={() => setIsApplicationOpen(false)}
       />
@@ -109,7 +112,7 @@ export default function Home() {
       <div className="md:hidden fixed bottom-6 left-6 right-6 z-40">
          <button
             onClick={() => {
-                const element = document.getElementById("courses");
+                const element = document.getElementById("programmes");
                 if (element) {
                     element.scrollIntoView({ behavior: 'smooth' });
                 }
@@ -117,7 +120,7 @@ export default function Home() {
             className="w-full py-4 bg-brand-primary text-white rounded-2xl font-bold shadow-2xl shadow-brand-primary/40 flex items-center justify-center gap-2"
          >
             <GraduationCap size={20} />
-            Browse & Apply
+            Browse Programmes
             <ArrowRight size={18} />
          </button>
       </div>

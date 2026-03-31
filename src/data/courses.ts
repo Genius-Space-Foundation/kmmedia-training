@@ -1,4 +1,4 @@
-export interface Course {
+export interface Programme {
   id: string;
   title: string;
   description: string;
@@ -7,11 +7,15 @@ export interface Course {
   category: string;
   requirements: string[];
   opportunities: string[];
+  modules?: string[];
   image: string;
   price: string;
 }
 
-export const courses: Course[] = [
+// Keep Course for backward compatibility during migration
+export type Course = Programme;
+
+export const programmes: Programme[] = [
   {
     id: "broadcast-journalism",
     title: "Broadcast Journalism",
@@ -23,13 +27,20 @@ export const courses: Course[] = [
       "WASSCE / SSCE or any Certificate",
       "Good command of English",
       "Passion for storytelling",
-      "Matured applicants should be able to read, write and understand"
+      "Matured applicants (25+) should be able to read, write and understand"
     ],
     opportunities: [
       "News Reporter",
       "TV/Radio Presenter",
       "Content Producer",
       "Digital Journalist"
+    ],
+    modules: [
+      "Radio & Television Broadcast Journalism (News, Sports & General Presentation)",
+      "Disc Jockeying",
+      "Basic Camera Handling, Video Editing & Graphic Designing",
+      "Basic Sound Production (Voice Recording, Editing & Mixing)",
+      "Media Marketing, PR and Communication"
     ],
     image: "/images/3.jpeg",
     price: "GHS 2,500.00"
@@ -44,16 +55,52 @@ export const courses: Course[] = [
     requirements: [
       "Basic computer literacy",
       "A keen ear for sound",
-      "Interest in music or audio production"
+      "Interest in music production"
     ],
     opportunities: [
       "Studio Engineer",
-      "Live Sound Technician",
-      "Foley Artist",
-      "Music Producer"
+      "Music Producer",
+      "Sound Designer",
+      "Mix Engineer"
+    ],
+    modules: [
+      "Console Operation, Engineering",
+      "Beat Making & Vocal Recording",
+      "MIDI Composition and Sequencing",
+      "Voice Recording and Editing",
+      "Mixing & Mastering"
     ],
     image: "/images/3.jpeg",
-    price: "GHS 3200.00"
+    price: "GHS 3,200.00"
+  },
+  {
+    id: "fashion-designing-dip",
+    title: "Fashion Designing",
+    description: "Learn the fundamentals of fashion design and garment construction.",
+    longDescription: "Master the art of fashion creation. From conceptual sketching and fabric selection to advanced tailoring techniques, you will learn how to bring your creative designs to life.",
+    duration: "2 Years 6 Months",
+    category: "Fashion",
+    requirements: [
+      "Creativity and sense of style",
+      "Passion for clothing design",
+      "Basic sketching skills"
+    ],
+    opportunities: [
+      "Fashion Designer",
+      "Wardrobe Stylist",
+      "Pattern Maker",
+      "Fashion Illustrator"
+    ],
+    modules: [
+      "Garment Construction Techniques",
+      "Tailoring",
+      "Freehand Cutting",
+      "Fashion Illustration",
+      "Pattern Making",
+      "Fashion Styling"
+    ],
+    image: "/images/3.jpeg",
+    price: "GHS 1,800.00"
   },
   {
     id: "digital-marketing",
@@ -72,6 +119,14 @@ export const courses: Course[] = [
       "Social Media Strategist",
       "SEO Specialist",
       "Content Marketer"
+    ],
+    modules: [
+      "Social Media Management",
+      "Search Engine Optimization (SEO)",
+      "Content Marketing Strategy",
+      "Email Marketing & Automation",
+      "Digital Analytics & ROI",
+      "Online Advertising (PPC)"
     ],
     image: "/images/3.jpeg",
     price: "GHS 1,650.00"
@@ -94,6 +149,13 @@ export const courses: Course[] = [
       "Creative Director",
       "Freelance Designer"
     ],
+    modules: [
+      "Adobe Photoshop",
+      "Adobe Illustrator",
+      "InDesign",
+      "Typography & Color Theory",
+      "Branding & Logo Design"
+    ],
     image: "/images/3.jpeg",
     price: "GHS 2,300.00"
   },
@@ -114,6 +176,14 @@ export const courses: Course[] = [
       "Backend Developer",
       "Full Stack Engineer",
       "Web Architect"
+    ],
+    modules: [
+      "HTML5 & Semantic Web",
+      "CSS3 & Modern Layouts (Flexbox/Grid)",
+      "JavaScript Fundamentals & ES6+",
+      "React.js & Frontend Frameworks",
+      "Database Management (SQL/NoSQL)",
+      "Server-side Development with Node.js"
     ],
     image: "/images/3.jpeg",
     price: "GHS 2,800.00"
@@ -136,29 +206,16 @@ export const courses: Course[] = [
       "Colorist",
       "Post-production Supervisor"
     ],
+    modules: [
+      "Getting Started with Adobe Premiere Pro",
+      "Advanced Cutting & Pacing Techniques",
+      "Color Correction and Grading",
+      "Audio Synchronization & Foley Integration",
+      "Motion Graphics with After Effects",
+      "Multi-camera Editing Workflow"
+    ],
     image: "/images/3.jpeg",
     price: "GHS 3,200.00"
-  },
-  {
-    id: "fashion-designing",
-    title: "Fashion Designing",
-    description: "Learn the fundamentals of fashion design, pattern making, and garment construction.",
-    longDescription: "Master the art of fashion creation. From conceptual sketching and fabric selection to advanced sewing techniques, you will learn how to bring your creative clothing designs to life under the guidance of industry experts.",
-    duration: "2 Years 6 Months",
-    category: "Fashion",
-    requirements: [
-      "Creativity and sense of style",
-      "Passion for clothing design",
-      "Basic sketching skills"
-    ],
-    opportunities: [
-      "Fashion Designer",
-      "Wardrobe Stylist",
-      "Pattern Maker",
-      "Fashion Illustrator"
-    ],
-    image: "/images/3.jpeg",
-    price: "GHS 1,800.00"
   },
   {
     id: "film-and-tv-production",
@@ -178,7 +235,18 @@ export const courses: Course[] = [
       "Cinematographer",
       "Screenwriter"
     ],
+    modules: [
+      "Scriptwriting and Storyboarding",
+      "Cinematography & Lighting Techniques",
+      "Directing for Screen & Set Management",
+      "Sound Design & Location Audio Recording",
+      "Production Management & Budgeting",
+      "Visual Effects and Cinematic Storytelling"
+    ],
     image: "/images/3.jpeg",
     price: "GHS 3,500.00"
   }
 ];
+
+// Keep courses alias for backward compatibility
+export const courses = programmes;
