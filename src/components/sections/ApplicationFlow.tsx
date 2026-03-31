@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { usePaystackPayment } from "react-paystack";
 import { Course, courses } from "@/data/courses";
-import { X, CheckCircle, CreditCard, Send, User, Mail, Phone, ArrowRight, BookOpen, Calendar, MapPin, Flag, Users, Briefcase, Home, Heart, ShieldHalf } from "lucide-react";
+import { X, CheckCircle, CreditCard, Send, User, Mail, Phone, ArrowRight, BookOpen, Calendar, MapPin, Flag, Users, Briefcase, Home, Heart, ShieldHalf, GraduationCap } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ApplicationFlowProps {
@@ -33,6 +33,9 @@ export function ApplicationFlow({ selectedCourse, isOpen, onClose }: Application
     guardianPhone: "",
     guardianOccupation: "",
     guardianRelationship: "",
+    educationLevel: "",
+    previousSchool: "",
+    completionYear: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -263,6 +266,46 @@ export function ApplicationFlow({ selectedCourse, isOpen, onClose }: Application
             />
           </div>
 
+          {/* Education Background Section */}
+          <div className="md:col-span-2 pt-6 border-t border-neutral-100 dark:border-neutral-800">
+            <h4 className="text-sm font-bold text-brand-text-primary dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+              <GraduationCap className="w-4 h-4 text-brand-primary" />
+              Education Background
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="relative group md:col-span-2">
+                <BookOpen className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+                <input
+                  type="text"
+                  placeholder="Level of Education (e.g. WASSCE, Diploma)"
+                  className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
+                  value={formData.educationLevel}
+                  onChange={e => setFormData({ ...formData, educationLevel: e.target.value })}
+                />
+              </div>
+              <div className="relative group">
+                <Home className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+                <input
+                  type="text"
+                  placeholder="Name of Previous school attended"
+                  className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
+                  value={formData.previousSchool}
+                  onChange={e => setFormData({ ...formData, previousSchool: e.target.value })}
+                />
+              </div>
+              <div className="relative group">
+                <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+                <input
+                  type="text"
+                  placeholder="Year of completion"
+                  className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
+                  value={formData.completionYear}
+                  onChange={e => setFormData({ ...formData, completionYear: e.target.value })}
+                />
+              </div>
+            </div>
+          </div>
+
           {/* Parent/Guardian Section */}
           <div className="md:col-span-2 pt-6 border-t border-neutral-100 dark:border-neutral-800">
             <h4 className="text-sm font-bold text-brand-text-primary dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2">
@@ -334,6 +377,9 @@ export function ApplicationFlow({ selectedCourse, isOpen, onClose }: Application
           !formData.guardianPhone || 
           !formData.guardianOccupation || 
           !formData.guardianRelationship || 
+          !formData.educationLevel || 
+          !formData.previousSchool || 
+          !formData.completionYear || 
           !activeCourse
         }
         className="w-full py-4 bg-brand-primary hover:bg-brand-secondary disabled:bg-neutral-300 dark:disabled:bg-neutral-700 text-white rounded-xl font-bold text-lg shadow-xl shadow-brand-primary/20 transition-all mt-6 flex items-center justify-center gap-2 group"

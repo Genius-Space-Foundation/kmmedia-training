@@ -11,7 +11,8 @@ export async function POST(req: Request) {
       nationality, hometown, religion, 
       gender, maritalStatus, occupation, 
       address, course, reference,
-      guardianName, guardianPhone, guardianOccupation, guardianRelationship
+      guardianName, guardianPhone, guardianOccupation, guardianRelationship,
+      educationLevel, previousSchool, completionYear
     } = body;
 
     // Basic validation
@@ -83,6 +84,22 @@ export async function POST(req: Request) {
              <tr style="border-bottom: 1px solid #eee;">
               <td style="padding: 10px; font-weight: bold; color: #555;">Address</td>
               <td style="padding: 10px;">${address}</td>
+            </tr>
+          </table>
+
+          <h3 style="color: #444; margin-top: 25px; border-left: 4px solid #0994c4; padding-left: 10px;">Education Background</h3>
+          <table style="width: 100%; border-collapse: collapse;">
+            <tr style="border-bottom: 1px solid #eee;">
+              <td style="padding: 10px; font-weight: bold; color: #555; width: 40%;">Level of Education</td>
+              <td style="padding: 10px;">${educationLevel}</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #eee;">
+              <td style="padding: 10px; font-weight: bold; color: #555;">Previous School</td>
+              <td style="padding: 10px;">${previousSchool}</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #eee;">
+              <td style="padding: 10px; font-weight: bold; color: #555;">Year of Completion</td>
+              <td style="padding: 10px;">${completionYear}</td>
             </tr>
           </table>
 
