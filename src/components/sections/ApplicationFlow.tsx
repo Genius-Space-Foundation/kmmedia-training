@@ -126,236 +126,263 @@ export function ApplicationFlow({ selectedCourse, isOpen, onClose }: Application
           </select>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="relative group md:col-span-2">
-            <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-            <input
-              type="text"
-              placeholder="Full Name"
-              className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
-              value={formData.name}
-              onChange={e => setFormData({ ...formData, name: e.target.value })}
-            />
-          </div>
-          
-          <div className="relative group">
-            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-            <input
-              type="email"
-              placeholder="Email Address"
-              className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
-              value={formData.email}
-              onChange={e => setFormData({ ...formData, email: e.target.value })}
-            />
-          </div>
-          
-          <div className="relative group">
-            <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-            <input
-              type="tel"
-              placeholder="Phone Number"
-              className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
-              value={formData.phone}
-              onChange={e => setFormData({ ...formData, phone: e.target.value })}
-            />
-          </div>
-
-          <div className="relative group">
-            <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-            <input
-              type="date"
-              placeholder="Date of Birth"
-              className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
-              value={formData.dob}
-              onChange={e => setFormData({ ...formData, dob: e.target.value })}
-            />
-          </div>
-
-          <div className="relative group">
-            <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-            <input
-              type="text"
-              placeholder="Place of Birth"
-              className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
-              value={formData.pob}
-              onChange={e => setFormData({ ...formData, pob: e.target.value })}
-            />
-          </div>
-
-          <div className="relative group">
-            <Flag className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-            <input
-              type="text"
-              placeholder="Nationality"
-              className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
-              value={formData.nationality}
-              onChange={e => setFormData({ ...formData, nationality: e.target.value })}
-            />
-          </div>
-
-          <div className="relative group">
-            <Home className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-            <input
-              type="text"
-              placeholder="Hometown"
-              className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
-              value={formData.hometown}
-              onChange={e => setFormData({ ...formData, hometown: e.target.value })}
-            />
-          </div>
-
-          <div className="relative group">
-            <Heart className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-            <input
-              type="text"
-              placeholder="Religion"
-              className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
-              value={formData.religion}
-              onChange={e => setFormData({ ...formData, religion: e.target.value })}
-            />
-          </div>
-
-          <div className="relative group">
-            <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-            <select
-              className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium appearance-none text-sm text-neutral-500 dark:text-neutral-400"
-              value={formData.gender}
-              onChange={e => setFormData({ ...formData, gender: e.target.value })}
-            >
-              <option value="" disabled>Select Gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-
-          <div className="relative group">
-            <Users className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-            <select
-              className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium appearance-none text-sm text-neutral-500 dark:text-neutral-400"
-              value={formData.maritalStatus}
-              onChange={e => setFormData({ ...formData, maritalStatus: e.target.value })}
-            >
-              <option value="" disabled>Select Marital Status</option>
-              <option value="single">Single</option>
-              <option value="married">Married</option>
-              <option value="divorced">Divorced</option>
-              <option value="widowed">Widowed</option>
-            </select>
-          </div>
-
-          <div className="relative group md:col-span-2">
-            <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-            <input
-              type="text"
-              placeholder="Occupation"
-              className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
-              value={formData.occupation}
-              onChange={e => setFormData({ ...formData, occupation: e.target.value })}
-            />
-          </div>
-
-          <div className="relative group md:col-span-2">
-            <MapPin className="absolute left-4 top-4 w-4 h-4 text-neutral-400" />
-            <textarea
-              placeholder="Residential Address"
-              rows={3}
-              className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm resize-none"
-              value={formData.address}
-              onChange={e => setFormData({ ...formData, address: e.target.value })}
-            />
-          </div>
-
-          {/* Education Background Section */}
-          <div className="md:col-span-2 pt-6 border-t border-neutral-100 dark:border-neutral-800">
-            <h4 className="text-sm font-bold text-brand-text-primary dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2">
-              <GraduationCap className="w-4 h-4 text-brand-primary" />
-              Education Background
-            </h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="relative group md:col-span-2">
-                <BookOpen className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-                <input
-                  type="text"
-                  placeholder="Level of Education (e.g. WASSCE, Diploma)"
-                  className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
-                  value={formData.educationLevel}
-                  onChange={e => setFormData({ ...formData, educationLevel: e.target.value })}
-                />
-              </div>
-              <div className="relative group">
-                <Home className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-                <input
-                  type="text"
-                  placeholder="Name of Previous school attended"
-                  className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
-                  value={formData.previousSchool}
-                  onChange={e => setFormData({ ...formData, previousSchool: e.target.value })}
-                />
-              </div>
-              <div className="relative group">
-                <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-                <input
-                  type="text"
-                  placeholder="Year of completion"
-                  className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
-                  value={formData.completionYear}
-                  onChange={e => setFormData({ ...formData, completionYear: e.target.value })}
-                />
-              </div>
+      <div className="space-y-8">
+        {/* Personal Information */}
+        <div className="pt-2">
+          <h4 className="text-sm font-bold text-brand-text-primary dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+            <User className="w-4 h-4 text-brand-primary" />
+            Personal Information
+          </h4>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="relative group md:col-span-2">
+              <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+              <input
+                type="text"
+                placeholder="Full Name"
+                className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
+                value={formData.name}
+                onChange={e => setFormData({ ...formData, name: e.target.value })}
+              />
             </div>
-          </div>
+            
+            <div className="relative group">
+              <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+              <select
+                className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium appearance-none text-sm text-neutral-500 dark:text-neutral-400"
+                value={formData.gender}
+                onChange={e => setFormData({ ...formData, gender: e.target.value })}
+              >
+                <option value="" disabled>Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
 
-          {/* Parent/Guardian Section */}
-          <div className="md:col-span-2 pt-6 border-t border-neutral-100 dark:border-neutral-800">
-            <h4 className="text-sm font-bold text-brand-text-primary dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2">
-              <ShieldHalf className="w-4 h-4 text-brand-primary" />
-              Parent / Guardian Information
-            </h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="relative group">
-                <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-                <input
-                  type="text"
-                  placeholder="Guardian's Full Name"
-                  className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
-                  value={formData.guardianName}
-                  onChange={e => setFormData({ ...formData, guardianName: e.target.value })}
-                />
-              </div>
-              <div className="relative group">
-                <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-                <input
-                  type="tel"
-                  placeholder="Guardian's Phone Number"
-                  className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
-                  value={formData.guardianPhone}
-                  onChange={e => setFormData({ ...formData, guardianPhone: e.target.value })}
-                />
-              </div>
-              <div className="relative group">
-                <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-                <input
-                  type="text"
-                  placeholder="Guardian's Occupation"
-                  className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
-                  value={formData.guardianOccupation}
-                  onChange={e => setFormData({ ...formData, guardianOccupation: e.target.value })}
-                />
-              </div>
-              <div className="relative group">
-                <Users className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-                <input
-                  type="text"
-                  placeholder="Relationship (e.g. Father)"
-                  className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
-                  value={formData.guardianRelationship}
-                  onChange={e => setFormData({ ...formData, guardianRelationship: e.target.value })}
-                />
-              </div>
+            <div className="relative group">
+              <Users className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+              <select
+                className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium appearance-none text-sm text-neutral-500 dark:text-neutral-400"
+                value={formData.maritalStatus}
+                onChange={e => setFormData({ ...formData, maritalStatus: e.target.value })}
+              >
+                <option value="" disabled>Select Marital Status</option>
+                <option value="single">Single</option>
+                <option value="married">Married</option>
+                <option value="divorced">Divorced</option>
+                <option value="widowed">Widowed</option>
+              </select>
+            </div>
+
+            <div className="relative group">
+              <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+              <input
+                type="text"
+                placeholder="Occupation"
+                className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
+                value={formData.occupation}
+                onChange={e => setFormData({ ...formData, occupation: e.target.value })}
+              />
+            </div>
+
+            <div className="relative group">
+              <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+              <input
+                type="date"
+                placeholder="Date of Birth"
+                className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
+                value={formData.dob}
+                onChange={e => setFormData({ ...formData, dob: e.target.value })}
+              />
+            </div>
+
+            <div className="relative group md:col-span-2">
+              <Heart className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+              <input
+                type="text"
+                placeholder="Religion"
+                className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
+                value={formData.religion}
+                onChange={e => setFormData({ ...formData, religion: e.target.value })}
+              />
             </div>
           </div>
         </div>
+
+        {/* Origin & Nationality */}
+        <div className="pt-6 border-t border-neutral-100 dark:border-neutral-800">
+          <h4 className="text-sm font-bold text-brand-text-primary dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+            <Flag className="w-4 h-4 text-brand-primary" />
+            Nationality
+          </h4>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="relative group">
+              <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+              <input
+                type="text"
+                placeholder="Place of Birth"
+                className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
+                value={formData.pob}
+                onChange={e => setFormData({ ...formData, pob: e.target.value })}
+              />
+            </div>
+
+            <div className="relative group">
+              <Flag className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+              <input
+                type="text"
+                placeholder="Nationality"
+                className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
+                value={formData.nationality}
+                onChange={e => setFormData({ ...formData, nationality: e.target.value })}
+              />
+            </div>
+
+            <div className="relative group md:col-span-2">
+              <Home className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+              <input
+                type="text"
+                placeholder="Hometown"
+                className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
+                value={formData.hometown}
+                onChange={e => setFormData({ ...formData, hometown: e.target.value })}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Contact Information */}
+        <div className="pt-6 border-t border-neutral-100 dark:border-neutral-800">
+          <h4 className="text-sm font-bold text-brand-text-primary dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+            <Mail className="w-4 h-4 text-brand-primary" />
+            Contact Information
+          </h4>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="relative group">
+              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+              <input
+                type="email"
+                placeholder="Email Address"
+                className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
+                value={formData.email}
+                onChange={e => setFormData({ ...formData, email: e.target.value })}
+              />
+            </div>
+            
+            <div className="relative group">
+              <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+              <input
+                type="tel"
+                placeholder="Phone Number"
+                className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
+                value={formData.phone}
+                onChange={e => setFormData({ ...formData, phone: e.target.value })}
+              />
+            </div>
+
+            <div className="relative group md:col-span-2">
+              <MapPin className="absolute left-4 top-4 w-4 h-4 text-neutral-400" />
+              <textarea
+                placeholder="Residential Address"
+                rows={3}
+                className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm resize-none"
+                value={formData.address}
+                onChange={e => setFormData({ ...formData, address: e.target.value })}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Education Background Section */}
+        <div className="md:col-span-2 pt-6 border-t border-neutral-100 dark:border-neutral-800">
+          <h4 className="text-sm font-bold text-brand-text-primary dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+            <GraduationCap className="w-4 h-4 text-brand-primary" />
+            Education Background
+          </h4>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="relative group md:col-span-2">
+              <BookOpen className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+              <input
+                type="text"
+                placeholder="Level of Education (e.g. WASSCE, Diploma)"
+                className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
+                value={formData.educationLevel}
+                onChange={e => setFormData({ ...formData, educationLevel: e.target.value })}
+              />
+            </div>
+            <div className="relative group">
+              <Home className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+              <input
+                type="text"
+                placeholder="Name of Previous school attended"
+                className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
+                value={formData.previousSchool}
+                onChange={e => setFormData({ ...formData, previousSchool: e.target.value })}
+              />
+            </div>
+            <div className="relative group">
+              <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+              <input
+                type="text"
+                placeholder="Year of completion"
+                className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
+                value={formData.completionYear}
+                onChange={e => setFormData({ ...formData, completionYear: e.target.value })}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Parent/Guardian Section */}
+        <div className="md:col-span-2 pt-6 border-t border-neutral-100 dark:border-neutral-800">
+          <h4 className="text-sm font-bold text-brand-text-primary dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+            <ShieldHalf className="w-4 h-4 text-brand-primary" />
+            Parent / Guardian Information
+          </h4>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="relative group">
+              <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+              <input
+                type="text"
+                placeholder="Guardian's Full Name"
+                className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
+                value={formData.guardianName}
+                onChange={e => setFormData({ ...formData, guardianName: e.target.value })}
+              />
+            </div>
+            <div className="relative group">
+              <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+              <input
+                type="tel"
+                placeholder="Guardian's Phone Number"
+                className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
+                value={formData.guardianPhone}
+                onChange={e => setFormData({ ...formData, guardianPhone: e.target.value })}
+              />
+            </div>
+            <div className="relative group">
+              <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+              <input
+                type="text"
+                placeholder="Guardian's Occupation"
+                className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
+                value={formData.guardianOccupation}
+                onChange={e => setFormData({ ...formData, guardianOccupation: e.target.value })}
+              />
+            </div>
+            <div className="relative group">
+              <Users className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+              <input
+                type="text"
+                placeholder="Relationship (e.g. Father)"
+                className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
+                value={formData.guardianRelationship}
+                onChange={e => setFormData({ ...formData, guardianRelationship: e.target.value })}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
       </div>
 
       <button
