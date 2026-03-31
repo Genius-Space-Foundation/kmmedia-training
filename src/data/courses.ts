@@ -99,7 +99,7 @@ export const programmes: Programme[] = [
       "Pattern Making",
       "Fashion Styling"
     ],
-    image: "/images/3.jpeg",
+    image: "/images/4.jpg",
     price: "GHS 1,800.00"
   },
   {
@@ -185,7 +185,7 @@ export const programmes: Programme[] = [
       "Database Management (SQL/NoSQL)",
       "Server-side Development with Node.js"
     ],
-    image: "/images/3.jpeg",
+    image: "/images/5.jpg",
     price: "GHS 2,800.00"
   },
   {
