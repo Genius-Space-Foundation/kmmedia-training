@@ -82,7 +82,7 @@ export function CourseModal({ programme, isOpen, onClose, onApply }: ProgrammeMo
                      <Award className="w-5 h-5 text-brand-primary" />
                      <div className="space-y-0.5">
                         <p className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider">Certification</p>
-                        <p className="text-sm font-bold dark:text-white">Professional</p>
+                        <p className="text-sm font-bold dark:text-white">{programme.certificate}</p>
                      </div>
                   </div>
                   <div className="p-4 bg-neutral-50 dark:bg-neutral-800/50 rounded-2xl border border-neutral-100 dark:border-neutral-800 text-center flex flex-col items-center gap-2">

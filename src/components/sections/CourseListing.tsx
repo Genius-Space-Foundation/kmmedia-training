@@ -115,7 +115,7 @@ export function CourseListing({ onSelectProgramme }: ProgrammeListingProps) {
                     <div className="p-1.5 bg-neutral-100 dark:bg-neutral-800 rounded-lg">
                       <Award className="w-4 h-4 text-brand-primary" />
                     </div>
-                    <span className="text-xs font-semibold dark:text-neutral-300">Certified</span>
+                    <span className="text-xs font-semibold dark:text-neutral-300 line-clamp-1">{programme.certificate}</span>
                   </div>
                 </div>
 

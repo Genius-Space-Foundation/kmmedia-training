@@ -5,6 +5,7 @@ export interface Programme {
   longDescription: string;
   duration: string;
   category: string;
+  certificate: string;
   requirements: string[];
   opportunities: string[];
   modules?: string[];
@@ -43,7 +44,8 @@ export const programmes: Programme[] = [
       "Media Marketing, PR and Communication"
     ],
     image: "/images/3.jpeg",
-    price: "GHS 2,500.00"
+    price: "GHS 2,500.00",
+    certificate: "Diploma"
   },
   {
     id: "sound-engineering",
@@ -71,7 +73,8 @@ export const programmes: Programme[] = [
       "Mixing & Mastering"
     ],
     image: "/images/3.jpeg",
-    price: "GHS 3,200.00"
+    price: "GHS 3,200.00",
+    certificate: "Professional Certificate"
   },
   {
     id: "fashion-designing-dip",
@@ -100,7 +103,8 @@ export const programmes: Programme[] = [
       "Fashion Styling"
     ],
     image: "/images/4.jpg",
-    price: "GHS 1,800.00"
+    price: "GHS 1,800.00",
+    certificate: "Diploma"
   },
   {
     id: "digital-marketing",
@@ -129,7 +133,8 @@ export const programmes: Programme[] = [
       "Online Advertising (PPC)"
     ],
     image: "/images/3.jpeg",
-    price: "GHS 1,650.00"
+    price: "GHS 1,650.00",
+    certificate: "Professional Certificate"
   },
   {
     id: "graphic-design",
@@ -157,7 +162,8 @@ export const programmes: Programme[] = [
       "Branding & Logo Design"
     ],
     image: "/images/3.jpeg",
-    price: "GHS 2,300.00"
+    price: "GHS 2,300.00",
+    certificate: "Professional Certificate"
   },
   {
     id: "web-development",
@@ -186,7 +192,8 @@ export const programmes: Programme[] = [
       "Server-side Development with Node.js"
     ],
     image: "/images/5.jpg",
-    price: "GHS 2,800.00"
+    price: "GHS 2,800.00",
+    certificate: "Professional Certificate"
   },
   {
     id: "video-editing",
@@ -215,7 +222,8 @@ export const programmes: Programme[] = [
       "Multi-camera Editing Workflow"
     ],
     image: "/images/3.jpeg",
-    price: "GHS 3,200.00"
+    price: "GHS 3,200.00",
+    certificate: "Professional Certificate"
   },
   {
     id: "film-and-tv-production",
@@ -244,7 +252,8 @@ export const programmes: Programme[] = [
       "Visual Effects and Cinematic Storytelling"
     ],
     image: "/images/3.jpeg",
-    price: "GHS 3,500.00"
+    price: "GHS 3,500.00",
+    certificate: "Professional Certificate"
   }
 ];
 
