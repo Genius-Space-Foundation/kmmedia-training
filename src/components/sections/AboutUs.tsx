@@ -63,24 +63,51 @@ export function AboutUs() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
             </div>
 
-            {/* Backing decorative shapes */}
-            <div className="absolute -top-6 -left-6 w-full h-full bg-brand-primary/10 dark:bg-brand-primary/5 rounded-2xl -z-10"></div>
-            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-brand-secondary/20 rounded-full blur-2xl -z-10"></div>
-            
-            {/* Floating badge */}
-            <motion.div 
-               animate={{ y: [0, -10, 0] }}
-               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-               className="absolute top-10 -right-8 bg-white dark:bg-neutral-800 p-4 rounded-xl shadow-xl border border-neutral-100 dark:border-neutral-700 hidden md:flex items-center gap-3 z-20"
-            >
-               <div className="w-10 h-10 bg-success/10 rounded-full flex items-center justify-center">
-                  <CheckCircle className="w-5 h-5 text-success" />
-               </div>
-               <div>
-                  <p className="font-bold text-brand-text-primary dark:text-white leading-tight">Accredited</p>
-                  <p className="text-xs text-brand-text-secondary dark:text-neutral-400">Excellence</p>
-               </div>
-            </motion.div>
+            {/* Accreditation & Partners Row */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 relative z-20">
+               {/* Badge 1: NaSIA */}
+               <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="bg-white dark:bg-neutral-800 p-4 rounded-2xl shadow-sm border border-neutral-100 dark:border-neutral-700 flex items-center gap-4"
+               >
+                  <div className="w-12 h-12 relative flex-shrink-0 bg-white rounded-full overflow-hidden border border-neutral-100 dark:border-neutral-700">
+                     <Image 
+                        src="/images/nasia.jpeg" 
+                        alt="NaSIA Logo" 
+                        fill 
+                        className="object-contain p-1.5"
+                     />
+                  </div>
+                  <div>
+                     <p className="text-[10px] uppercase tracking-wider font-bold text-brand-text-secondary dark:text-neutral-400 mb-0.5">Accredited by</p>
+                     <p className="text-base font-extrabold text-brand-text-primary dark:text-white leading-tight">NaSIA</p>
+                  </div>
+               </motion.div>
+
+               {/* Badge 2: Freedom FM */}
+               <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 }}
+                  className="bg-white dark:bg-neutral-800 p-4 rounded-2xl shadow-sm border border-neutral-100 dark:border-neutral-700 flex items-center gap-4"
+               >
+                  <div className="w-12 h-12 relative flex-shrink-0 bg-white rounded-full overflow-hidden border border-neutral-100 dark:border-neutral-700">
+                     <Image 
+                        src="/images/freedom.jpeg" 
+                        alt="Freedom FM Logo" 
+                        fill 
+                        className="object-contain p-1.5"
+                     />
+                  </div>
+                  <div>
+                     <p className="text-[10px] uppercase tracking-wider font-bold text-brand-text-secondary dark:text-neutral-400 mb-0.5">In Partnership with</p>
+                     <p className="text-base font-extrabold text-brand-text-primary dark:text-white leading-tight">Freedom FM</p>
+                  </div>
+               </motion.div>
+            </div>
           </motion.div>
 
           {/* Right Side: Content */}
