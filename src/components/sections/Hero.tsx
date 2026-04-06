@@ -54,6 +54,24 @@ export function Hero() {
     }
   };
 
+  const partners = [
+    {
+      name: "NaSIA",
+      logo: "/images/nasia.jpeg",
+      label: "Accredited by"
+    },
+    {
+      name: "Freedom FM",
+      logo: "/images/freedom.jpeg",
+      label: "In Partnership with"
+    },
+    {
+      name: "Registrar of Companies",
+      logo: "/images/registrar.png",
+      label: "Registered by"
+    }
+  ];
+
   return (
     <section className="relative overflow-hidden bg-neutral-900 pt-32 pb-20 md:pt-48 md:pb-32 min-h-[90vh] flex flex-col items-center justify-center">
       {/* Background Image & Overlay */}
@@ -113,50 +131,52 @@ export function Hero() {
           </button>
         </motion.div>
 
-        {/* Partners & Accreditation */}
-        <motion.div
-           initial={{ opacity: 0, y: 20 }}
-           animate={{ opacity: 1, y: 0 }}
-           transition={{ duration: 0.5, delay: 0.4 }}
-           className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10"
-        >
-           {/* Accreditation */}
-           <div className="flex items-center gap-3 group">
-              <div className="w-12 h-12 relative flex-shrink-0 bg-white rounded-full overflow-hidden border border-white/20 shadow-lg p-1.5 transition-transform group-hover:scale-110">
-                 <Image 
-                    src="/images/nasia.jpeg" 
-                    alt="NaSIA Logo" 
-                    fill 
-                    sizes="48px"
-                    className="object-contain"
-                 />
-              </div>
-              <div className="text-left">
-                 <p className="text-[10px] uppercase tracking-widest font-bold text-white/60 mb-0.5">Accredited by</p>
-                 <p className="text-sm font-extrabold text-white">NaSIA</p>
-              </div>
-           </div>
+        {/* Partners & Accreditation Marquee */}
+        <div className="mt-16 w-full max-w-5xl relative overflow-hidden group">
+           {/* Left and Right edge fades for premium look */}
+           <div className="absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-neutral-900 to-transparent pointer-events-none" />
+           <div className="absolute right-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-l from-neutral-900 to-transparent pointer-events-none" />
 
-           {/* Divider - only visible on sm+ screens */}
-           <div className="hidden sm:block w-[1px] h-8 bg-white/10" />
+           <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.5 }}
+              className="flex items-center"
+           >
+              <motion.div 
+                 animate={{ 
+                    x: ["0%", "-33.33%"], 
+                 }}
+                 transition={{ 
+                    duration: 30, 
+                    repeat: Infinity, 
+                    ease: "linear" 
+                 }}
+                 className="flex items-center gap-12 whitespace-nowrap py-4"
+              >
+                 {/* Double rendering the partners for a seamless loop */}
+                 {[...partners, ...partners, ...partners].map((partner, idx) => (
+                    <div key={idx} className="flex items-center gap-3 shrink-0">
+                       <div className="w-12 h-12 relative flex-shrink-0 bg-white rounded-full overflow-hidden border border-white/20 shadow-lg p-1.5 transition-transform hover:scale-110">
+                          <Image 
+                             src={partner.logo} 
+                             alt={`${partner.name} logo`} 
+                             fill 
+                             sizes="48px"
+                             className="object-contain"
+                          />
+                       </div>
+                       <div className="text-left">
+                          <p className="text-[10px] uppercase tracking-widest font-bold text-white/50 mb-0.5">{partner.label}</p>
+                          <p className="text-sm font-extrabold text-white leading-tight">{partner.name}</p>
+                       </div>
+                    </div>
+                 ))}
+              </motion.div>
+           </motion.div>
+        </div>
 
-           {/* Partnership */}
-           <div className="flex items-center gap-3 group">
-              <div className="w-12 h-12 relative flex-shrink-0 bg-white rounded-full overflow-hidden border border-white/20 shadow-lg p-1.5 transition-transform group-hover:scale-110">
-                 <Image 
-                    src="/images/freedom.jpeg" 
-                    alt="Freedom FM Logo" 
-                    fill 
-                    sizes="48px"
-                    className="object-contain"
-                 />
-              </div>
-              <div className="text-left">
-                 <p className="text-[10px] uppercase tracking-widest font-bold text-white/60 mb-0.5">In Partnership with</p>
-                 <p className="text-sm font-extrabold text-white">Freedom FM</p>
-              </div>
-           </div>
-        </motion.div>
+
 
 
         {/* Stats / Trust */}

@@ -107,7 +107,29 @@ export function AboutUs() {
                      <p className="text-base font-extrabold text-brand-text-primary dark:text-white leading-tight">Freedom FM</p>
                   </div>
                </motion.div>
+               {/* Badge 3: Registrar of Companies */}
+               <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className="bg-white dark:bg-neutral-800 p-4 rounded-2xl shadow-sm border border-neutral-100 dark:border-neutral-700 flex items-center gap-4"
+               >
+                  <div className="w-12 h-12 relative flex-shrink-0 bg-white rounded-full overflow-hidden border border-neutral-100 dark:border-neutral-700">
+                     <Image 
+                        src="/images/registrar.png" 
+                        alt="Registrar of Companies Logo" 
+                        fill 
+                        className="object-contain p-1.5"
+                     />
+                  </div>
+                  <div>
+                     <p className="text-[10px] uppercase tracking-wider font-bold text-brand-text-secondary dark:text-neutral-400 mb-0.5">Registered by</p>
+                     <p className="text-base font-extrabold text-brand-text-primary dark:text-white leading-tight">Registrar of Companies</p>
+                  </div>
+               </motion.div>
             </div>
+
           </motion.div>
 
           {/* Right Side: Content */}
