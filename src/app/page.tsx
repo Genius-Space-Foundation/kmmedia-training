@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { CourseListing } from "@/components/sections/CourseListing";
@@ -15,13 +15,28 @@ const ApplicationFlow = dynamic(
 );
 import { Footer } from "@/components/layout/Footer";
 import { Programme } from "@/data/courses";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Rocket, GraduationCap, ArrowRight } from "lucide-react";
 
 export default function Home() {
   const [selectedProgramme, setSelectedProgramme] = useState<Programme | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isApplicationOpen, setIsApplicationOpen] = useState(false);
+  const [showMobileCta, setShowMobileCta] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show button after scrolling past 400px (roughly the hero area)
+      if (window.scrollY > 400) {
+        setShowMobileCta(true);
+      } else {
+        setShowMobileCta(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleSelectProgramme = (programme: Programme) => {
     setSelectedProgramme(programme);
@@ -108,22 +123,31 @@ export default function Home() {
         onClose={() => setIsApplicationOpen(false)}
       />
 
-      {/* Sticky Mobile CTA */}
-      <div className="md:hidden fixed bottom-6 left-6 right-6 z-40">
-         <button
-            onClick={() => {
-                const element = document.getElementById("programmes");
-                if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' });
-                }
-            }}
-            className="w-full py-4 bg-brand-primary text-white rounded-2xl font-bold shadow-2xl shadow-brand-primary/40 flex items-center justify-center gap-2"
-         >
-            <GraduationCap size={20} />
-            Browse Programmes
-            <ArrowRight size={18} />
-         </button>
-      </div>
+      {/* Sticky Mobile CTA - Appears on scroll */}
+      <AnimatePresence>
+        {showMobileCta && (
+          <motion.div 
+            initial={{ opacity: 0, y: 40, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 40, scale: 0.9 }}
+            className="md:hidden fixed bottom-6 left-6 right-6 z-40"
+          >
+             <button
+                onClick={() => {
+                    const element = document.getElementById("programmes");
+                    if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }}
+                className="w-full py-4 bg-brand-primary text-white rounded-2xl font-bold shadow-2xl shadow-brand-primary/40 flex items-center justify-center gap-2 border border-white/10"
+             >
+                <GraduationCap size={20} />
+                Browse Programmes
+                <ArrowRight size={18} />
+             </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }
