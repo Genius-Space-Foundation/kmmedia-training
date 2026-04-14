@@ -14,7 +14,7 @@ const ApplicationFlow = dynamic(
   { ssr: false }
 );
 import { Footer } from "@/components/layout/Footer";
-import { Programme } from "@/data/courses";
+import { Programme, programmes } from "@/data/courses";
 import { motion, AnimatePresence } from "framer-motion";
 import { Rocket, GraduationCap, ArrowRight } from "lucide-react";
 
@@ -148,6 +148,30 @@ export default function Home() {
           </motion.div>
         )}
       </AnimatePresence>
+      {/* Structured Data for Programmes */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "itemListElement": programmes.map((prog, index) => ({
+              "@type": "ListItem",
+              "position": index + 1,
+              "item": {
+                "@type": "Course",
+                "name": prog.title,
+                "description": prog.description,
+                "provider": {
+                  "@type": "EducationalOrganization",
+                  "name": "Kmmedia Training Institute",
+                  "sameAs": "https://kmmediatraininginstitute.com"
+                }
+              }
+            }))
+          })
+        }}
+      />
     </main>
   );
 }
