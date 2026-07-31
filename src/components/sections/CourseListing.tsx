@@ -5,23 +5,30 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Search, Filter, BookOpen, Clock, Award, Star, ArrowRight } from "lucide-react";
 import { programmes, Programme } from "@/data/courses";
+import Link from "next/link";
 
 interface ProgrammeListingProps {
   onSelectProgramme: (programme: Programme) => void;
+  limit?: number;
+  hideFilters?: boolean;
+  showViewAll?: boolean;
 }
 
-export function CourseListing({ onSelectProgramme }: ProgrammeListingProps) {
+export function CourseListing({ onSelectProgramme, limit, hideFilters = false, showViewAll = false }: ProgrammeListingProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   const categories = ["All", ...Array.from(new Set(programmes.map(p => p.category)))];
 
   const filteredProgrammes = programmes.filter(programme => {
+    if (hideFilters) return true; // If filters are hidden, just return all
     const matchesSearch = programme.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          programme.description.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = selectedCategory === "All" || programme.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
+
+  const displayedProgrammes = limit ? filteredProgrammes.slice(0, limit) : filteredProgrammes;
 
   return (
     <section id="programmes" className="py-20 bg-neutral-50 dark:bg-neutral-800/50">
@@ -34,41 +41,46 @@ export function CourseListing({ onSelectProgramme }: ProgrammeListingProps) {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto mt-6 md:mt-0">
-            {/* Search */}
-            <div className="relative group w-full sm:w-auto">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400 group-focus-within:text-brand-primary transition-colors" />
-              <input
-                type="text"
-                placeholder="Search programmes..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 pr-4 py-3 sm:py-2 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl sm:rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary w-full sm:min-w-[260px] transition-all text-base sm:text-sm"
-              />
+        {/* Categories and Search only shown if not hidden */}
+        {!hideFilters && (
+          <>
+            <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto mt-6 md:mt-0 md:absolute md:right-10 md:-top-16">
+              {/* Search */}
+              <div className="relative group w-full sm:w-auto">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400 group-focus-within:text-brand-primary transition-colors" />
+                <input
+                  type="text"
+                  placeholder="Search programmes..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-10 pr-4 py-3 sm:py-2 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl sm:rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary w-full sm:min-w-[260px] transition-all text-base sm:text-sm"
+                />
+              </div>
             </div>
-          </div>
-        </div>
 
-        {/* Categories */}
-        <div className="flex flex-wrap gap-2 mb-12 overflow-x-auto pb-2 scrollbar-hide">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-all ${
-                selectedCategory === category
-                  ? "bg-brand-primary text-white shadow-lg shadow-brand-primary/20 scale-105"
-                  : "bg-white dark:bg-neutral-900 text-brand-text-secondary dark:text-neutral-400 hover:bg-neutral-50 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-700"
-              }`}
-            >
-              {category}
-            </button>
-          ))}
+            {/* Categories */}
+            <div className="flex flex-wrap gap-2 mb-12 overflow-x-auto pb-2 scrollbar-hide">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-all ${
+                    selectedCategory === category
+                      ? "bg-brand-primary text-white shadow-lg shadow-brand-primary/20 scale-105"
+                      : "bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-700 border border-neutral-200 dark:border-neutral-700"
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </>
+        )}
         </div>
 
         {/* Programme Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {filteredProgrammes.map((programme) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {displayedProgrammes.map((programme, index) => (
             <motion.div
               layout
               key={programme.id}
@@ -133,13 +145,25 @@ export function CourseListing({ onSelectProgramme }: ProgrammeListingProps) {
           ))}
         </div>
 
-        {filteredProgrammes.length === 0 && (
+        {displayedProgrammes.length === 0 && (
           <div className="py-32 text-center">
              <div className="inline-flex p-6 bg-neutral-100 dark:bg-neutral-800 rounded-full mb-6 text-neutral-400">
                 <BookOpen size={48} />
              </div>
              <h3 className="text-xl font-bold text-brand-text-primary dark:text-white">No programmes found</h3>
              <p className="text-brand-text-secondary dark:text-neutral-400 mt-2">Try adjusting your search or filters.</p>
+          </div>
+        )}
+
+        {showViewAll && (
+          <div className="mt-16 text-center">
+            <Link
+              href="/programmes"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-primary text-white rounded-xl font-bold hover:bg-brand-secondary transition-all shadow-lg shadow-brand-primary/20 hover:shadow-xl hover:scale-105 active:scale-95"
+            >
+              View All Programmes
+              <ArrowRight className="w-5 h-5" />
+            </Link>
           </div>
         )}
       </div>

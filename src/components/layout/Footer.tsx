@@ -10,6 +10,7 @@ import {
   TwitterLogo,
   InstagramLogo,
   LinkedinLogo,
+  TiktokLogo,
   ArrowRight
 } from "@phosphor-icons/react";
 
@@ -55,6 +56,9 @@ export function Footer() {
               </a> */}
               <a href="https://www.instagram.com/kmmedia_gh/" className="p-2 rounded-full bg-neutral-800 hover:bg-brand-primary transition-colors" aria-label="Instagram">
                 <InstagramLogo size={24} />
+              </a>
+              <a href="https://vm.tiktok.com/ZS9hYRxe1prKs-uB1Qr/" className="p-2 rounded-full bg-neutral-800 hover:bg-brand-primary transition-colors" aria-label="TikTok">
+                <TiktokLogo size={24} />
               </a>
               <a href="#" className="p-2 rounded-full bg-neutral-800 hover:bg-brand-primary transition-colors" aria-label="LinkedIn">
                 <LinkedinLogo size={24} />

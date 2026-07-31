@@ -74,7 +74,7 @@ export function AboutUs() {
                >
                   <div className="w-12 h-12 relative flex-shrink-0 bg-white rounded-full overflow-hidden border border-neutral-100 dark:border-neutral-700">
                      <Image 
-                        src="/images/nasia.jpeg" 
+                        src="/images/nasia.png" 
                         alt="NaSIA Logo" 
                         fill 
                         className="object-contain p-1.5"

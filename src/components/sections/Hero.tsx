@@ -57,7 +57,7 @@ export function Hero() {
   const partners = [
     {
       name: "NaSIA",
-      logo: "/images/nasia.jpeg",
+      logo: "/images/nasia.png",
       label: "Accredited by"
     },
     {

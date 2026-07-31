@@ -60,7 +60,12 @@ export default function Home() {
       
       <Hero />
 
-      <CourseListing onSelectProgramme={handleSelectProgramme} />
+      <CourseListing 
+        onSelectProgramme={handleSelectProgramme} 
+        limit={3} 
+        hideFilters={true} 
+        showViewAll={true} 
+      />
 
       <Requirements />
 

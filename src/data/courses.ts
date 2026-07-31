@@ -23,7 +23,7 @@ export const programmes: Programme[] = [
     description: "Master the art of storytelling for TV, radio, and digital platforms.",
     longDescription: "This comprehensive course covers everything from news gathering and scriptwriting to on-camera presentation and digital reporting. Students will gain hands-on experience in our state-of-the-art studio and learn from industry professionals.",
     duration: "1 Year 6 Months",
-    category: "Media",
+    category: "Media Programmes",
     requirements: [
       "WASSCE / SSCE or any Certificate",
       "Good command of English",
@@ -53,7 +53,7 @@ export const programmes: Programme[] = [
     description: "Learn the technical aspects of sound recording, mixing, and mastering.",
     longDescription: "Dive deep into the world of audio production. This course covers acoustics, signal processing, microphone techniques, and advanced mixing and mastering using industry-standard software and hardware.",
     duration: "6 Months",
-    category: "Media",
+    category: "Media Programmes",
     requirements: [
       "Basic computer literacy",
       "A keen ear for sound",
@@ -82,7 +82,7 @@ export const programmes: Programme[] = [
     description: "Learn the fundamentals of fashion design and garment construction.",
     longDescription: "Master the art of fashion creation. From conceptual sketching and fabric selection to advanced tailoring techniques, you will learn how to bring your creative designs to life.",
     duration: "2 Years 6 Months",
-    category: "Fashion",
+    category: "Media Programmes",
     requirements: [
       "Creativity and sense of style",
       "Passion for clothing design",
@@ -112,7 +112,7 @@ export const programmes: Programme[] = [
     description: "Grow brands using social media, SEO, and data-driven strategies.",
     longDescription: "In the digital age, marketing is essential. Learn how to create compelling campaigns, manage social media presence, optimize for search engines, and analyze data to drive growth and ROI.",
     duration: "6 Months",
-    category: "IT",
+    category: "Tech Programmes",
     requirements: [
       "Basic computer literacy",
       "Analytical mindset",
@@ -142,7 +142,7 @@ export const programmes: Programme[] = [
     description: "Transform ideas into stunning visuals using industry-standard tools.",
     longDescription: "Master the principles of design, typography, and color theory. Learn to use Adobe Creative Suite (Photoshop, Illustrator, InDesign) to create professional logos, branding materials, and digital assets.",
     duration: "6 Months",
-    category: "Design",
+    category: "Media Programmes",
     requirements: [
       "Creativity and eye for detail",
       "Basic computer skills",
@@ -171,7 +171,7 @@ export const programmes: Programme[] = [
     description: "Build modern, responsive websites and web applications from scratch.",
     longDescription: "From HTML and CSS to JavaScript and React, this course takes you on a journey to becoming a full-stack developer. Learn to create interactive, high-performance websites that work on any device.",
     duration: "6 Months",
-    category: "IT",
+    category: "Tech Programmes",
     requirements: [
       "Logical thinking",
       "Patience and problem-solving skills",
@@ -201,7 +201,7 @@ export const programmes: Programme[] = [
     description: "Create compelling videos with professional editing and motion graphics.",
     longDescription: "Learn the art of post-production. Master Adobe Premiere Pro and After Effects to edit footage, add special effects, create motion graphics, and deliver high-quality video content for various platforms.",
     duration: "6 Months",
-    category: "Media",
+    category: "Media Programmes",
     requirements: [
       "A good computer",
       "Creativity",
@@ -231,7 +231,7 @@ export const programmes: Programme[] = [
     description: "Master the entire production process of creating compelling films and television programming.",
     longDescription: "A comprehensive journey through directing, producing, cinematography, and screenwriting. Learn how to transform a script into a broadcast-ready production with hands-on practice on real sets.",
     duration: "6 Months",
-    category: "Media",
+    category: "Media Programmes",
     requirements: [
       "Passion for storytelling",
       "Ability to work in a team",
@@ -254,6 +254,118 @@ export const programmes: Programme[] = [
     image: "/images/3.jpeg",
     price: "GHS 3,500.00",
     certificate: "Professional Certificate"
+  },
+  {
+    id: "robotics-for-kids",
+    title: "Robotics for Kids",
+    description: "Introduce kids to the exciting world of robotics, coding, and engineering.",
+    longDescription: "A hands-on program designed for young minds to learn the basics of robotics. Students will build and program their own robots, developing problem-solving skills, logical thinking, and creativity.",
+    duration: "3 Months",
+    category: "Tech Programmes",
+    requirements: [
+      "Ages 8-15",
+      "Curiosity and willingness to learn",
+      "No prior coding experience needed"
+    ],
+    opportunities: [
+      "Junior Programmer",
+      "Robotics Enthusiast",
+      "STEM Innovator"
+    ],
+    modules: [
+      "Introduction to Robotics & Electronics",
+      "Basic Coding Concepts",
+      "Building Simple Robots",
+      "Sensors and Motors",
+      "Programming Challenges"
+    ],
+    image: "/images/3.jpeg",
+    price: "GHS 1,200.00",
+    certificate: "Certificate of Completion"
+  },
+  {
+    id: "product-design",
+    title: "Product Design (UI/UX Design)",
+    description: "Learn to design beautiful, user-centric interfaces and experiences.",
+    longDescription: "Master the art of Product Design. Learn user research, wireframing, prototyping, and high-fidelity design using Figma to create digital products that users love.",
+    duration: "6 Months",
+    category: "Tech Programmes",
+    requirements: [
+      "Basic computer literacy",
+      "Creativity and empathy",
+      "Interest in user experience"
+    ],
+    opportunities: [
+      "UI/UX Designer",
+      "Product Designer",
+      "Interaction Designer"
+    ],
+    modules: [
+      "Introduction to UI/UX",
+      "User Research & Personas",
+      "Wireframing & Prototyping",
+      "Visual Design with Figma",
+      "Usability Testing"
+    ],
+    image: "/images/5.jpg",
+    price: "GHS 1,800.00",
+    certificate: "Professional Certificate"
+  },
+  {
+    id: "mobile-app-development",
+    title: "Mobile App Development",
+    description: "Build native and cross-platform mobile applications for iOS and Android.",
+    longDescription: "Learn how to build powerful mobile applications from scratch. This course covers everything from mobile UI design principles to cross-platform development using modern frameworks like React Native.",
+    duration: "6 Months",
+    category: "Tech Programmes",
+    requirements: [
+      "Basic programming knowledge",
+      "Logical thinking",
+      "A capable computer"
+    ],
+    opportunities: [
+      "Mobile App Developer",
+      "React Native Developer",
+      "Software Engineer"
+    ],
+    modules: [
+      "Mobile UI/UX Principles",
+      "Introduction to React Native",
+      "State Management",
+      "API Integration",
+      "App Deployment & Stores"
+    ],
+    image: "/images/3.jpeg",
+    price: "GHS 2,800.00",
+    certificate: "Professional Certificate"
+  },
+  {
+    id: "content-creation",
+    title: "Content Creation",
+    description: "Master the art of creating viral content for digital and social platforms.",
+    longDescription: "Learn how to conceptualize, produce, and distribute engaging content. This course covers videography, photography, copywriting, and strategy for platforms like YouTube, TikTok, and Instagram.",
+    duration: "3 Months",
+    category: "Tech Programmes",
+    requirements: [
+      "Creativity",
+      "A smartphone or camera",
+      "Passion for storytelling"
+    ],
+    opportunities: [
+      "Content Creator",
+      "Social Media Influencer",
+      "Digital Marketer"
+    ],
+    modules: [
+      "Content Strategy & Planning",
+      "Mobile Videography & Photography",
+      "Video Editing for Social Media",
+      "Copywriting & Storytelling",
+      "Monetization & Brand Deals"
+    ],
+    image: "/images/4.jpg",
+    price: "GHS 1,500.00",
+    certificate: "Certificate of Completion"
   }
 ];
 
