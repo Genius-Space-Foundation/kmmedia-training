@@ -96,7 +96,7 @@ export default function NewsEventsPage() {
                           </h4>
                         </div>
                         
-                        <div className="flex flex-col gap-1.5 pl-15 ml-15 text-sm font-medium text-neutral-500 dark:text-neutral-400">
+                        <div className="flex flex-col gap-1.5 pl-[60px] text-sm font-medium text-neutral-500 dark:text-neutral-400">
                           <div className="flex items-center gap-2">
                             <Clock size={14} className="text-neutral-400" />
                             {event.time}
