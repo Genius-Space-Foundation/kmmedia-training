@@ -107,7 +107,7 @@ export default function NewsEventsPage() {
                           </div>
                         </div>
                         <div className="mt-2 pl-[60px]">
-                          <a href="https://forms.google.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-full py-2 bg-brand-primary text-white rounded-lg font-bold text-sm hover:bg-brand-secondary transition-colors shadow-md shadow-brand-primary/20">
+                          <a href="https://forms.gle/x7JsCrtfheemdx5s6" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-full py-2 bg-brand-primary text-white rounded-lg font-bold text-sm hover:bg-brand-secondary transition-colors shadow-md shadow-brand-primary/20">
                             Register
                           </a>
                         </div>
