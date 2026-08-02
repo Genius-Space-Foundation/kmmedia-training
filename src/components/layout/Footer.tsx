@@ -54,7 +54,7 @@ export function Footer() {
               {/* <a href="#" className="p-2 rounded-full bg-neutral-800 hover:bg-brand-primary transition-colors" aria-label="Twitter">
                 <TwitterLogo size={18} />
               </a> */}
-              <a href="https://www.instagram.com/kmmedia_gh/" className="p-2 rounded-full bg-neutral-800 hover:bg-brand-primary transition-colors" aria-label="Instagram">
+              <a href="https://www.instagram.com/kmmediatraininginstitute?igsh=MTVneW85YW4ydGk5cQ==" className="p-2 rounded-full bg-neutral-800 hover:bg-brand-primary transition-colors" aria-label="Instagram">
                 <InstagramLogo size={24} />
               </a>
               <a href="https://vm.tiktok.com/ZS9hYRxe1prKs-uB1Qr/" className="p-2 rounded-full bg-neutral-800 hover:bg-brand-primary transition-colors" aria-label="TikTok">
