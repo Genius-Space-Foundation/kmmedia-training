@@ -8,6 +8,7 @@ import { AboutUs } from "@/components/sections/AboutUs";
 import { Requirements } from "@/components/sections/Requirements";
 import { CourseModal } from "@/components/modals/CourseModal";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
 const ApplicationFlow = dynamic(
   () => import("@/components/sections/ApplicationFlow").then(mod => mod.ApplicationFlow),
@@ -91,22 +92,18 @@ export default function Home() {
                   Join hundreds of successful graduates who have transformed their careers with KM Media Training Institute.
                </p>
                <div className="pt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
-                  <button
-                    onClick={() => {
-                        const element = document.getElementById("programmes");
-                        if (element) {
-                            element.scrollIntoView({ behavior: 'smooth' });
-                        }
-                    }}
-                    className="w-full sm:w-auto px-10 py-4 bg-white text-brand-primary rounded-full font-bold text-lg shadow-2xl hover:bg-neutral-50 transition-all hover:-translate-y-1"
+                  <Link
+                    href="/programmes"
+                    className="w-full sm:w-auto px-10 py-4 bg-white text-brand-primary rounded-full font-bold text-lg shadow-2xl hover:bg-neutral-50 transition-all hover:-translate-y-1 text-center"
                   >
                      Explore Programmes
-                  </button>
-                  <button
-                    className="w-full sm:w-auto px-10 py-4 border-2 border-white/30 text-white rounded-full font-bold text-lg hover:bg-white/10 transition-all"
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="w-full sm:w-auto px-10 py-4 border-2 border-white/30 text-white rounded-full font-bold text-lg hover:bg-white/10 transition-all text-center"
                   >
                      Contact Admissions
-                  </button>
+                  </Link>
                </div>
             </motion.div>
          </div>
@@ -137,19 +134,14 @@ export default function Home() {
             exit={{ opacity: 0, y: 40, scale: 0.9 }}
             className="md:hidden fixed bottom-6 left-6 right-6 z-40"
           >
-             <button
-                onClick={() => {
-                    const element = document.getElementById("programmes");
-                    if (element) {
-                        element.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }}
+             <Link
+                href="/programmes"
                 className="w-full py-4 bg-brand-primary text-white rounded-2xl font-bold shadow-2xl shadow-brand-primary/40 flex items-center justify-center gap-2 border border-white/10"
              >
                 <GraduationCap size={20} />
                 Browse Programmes
                 <ArrowRight size={18} />
-             </button>
+             </Link>
           </motion.div>
         )}
       </AnimatePresence>
