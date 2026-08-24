@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { GraduationCap, ArrowRight, CheckCircle } from "lucide-react";
 
 export function Hero() {
@@ -47,12 +48,7 @@ export function Hero() {
     return () => clearTimeout(timer);
   }, [displayText, isDeleting, index, typingSpeed, dynamicWords]);
 
-  const scrollToProgrammes = () => {
-    const element = document.getElementById("programmes");
-    if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+
 
   const partners = [
     {
@@ -122,13 +118,13 @@ export function Hero() {
            transition={{ duration: 0.5, delay: 0.3 }}
            className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full"
         >
-          <button
-            onClick={scrollToProgrammes}
+          <Link
+            href="/programmes"
             className="w-full sm:w-auto px-10 py-4 bg-brand-primary hover:bg-brand-secondary text-white rounded-full font-bold text-lg flex items-center justify-center gap-2 transform transition-all hover:scale-105 shadow-xl hover:shadow-sm"
           >
             Browse Programmes
             <ArrowRight className="w-5 h-5" />
-          </button>
+          </Link>
         </motion.div>
 
         {/* Partners & Accreditation Marquee */}

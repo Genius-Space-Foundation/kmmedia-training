@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
+import { ContactForm } from "./ContactForm";
 
 export const metadata = {
   title: "Contact Us",
@@ -70,36 +71,7 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Form */}
-            <div className="bg-white dark:bg-neutral-900 p-8 md:p-10 rounded-3xl border border-neutral-100 dark:border-neutral-800 shadow-2xl shadow-brand-primary/5">
-              <h3 className="text-2xl font-bold text-brand-text-primary dark:text-white mb-6">Send us a Message</h3>
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-brand-text-primary dark:text-neutral-300">First Name</label>
-                    <input type="text" className="w-full px-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all text-sm" placeholder="John" />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-brand-text-primary dark:text-neutral-300">Last Name</label>
-                    <input type="text" className="w-full px-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all text-sm" placeholder="Doe" />
-                  </div>
-                </div>
-                
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-brand-text-primary dark:text-neutral-300">Email Address</label>
-                  <input type="email" className="w-full px-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all text-sm" placeholder="john@example.com" />
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-brand-text-primary dark:text-neutral-300">Message</label>
-                  <textarea rows={5} className="w-full px-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all text-sm resize-none" placeholder="How can we help you?"></textarea>
-                </div>
-
-                <button type="button" className="w-full py-4 bg-brand-primary hover:bg-brand-secondary text-white rounded-xl font-bold text-lg shadow-xl shadow-brand-primary/20 transition-all flex items-center justify-center gap-2 group">
-                  Send Message
-                  <Send className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                </button>
-              </form>
-            </div>
+            <ContactForm />
           </div>
         </div>
       </div>
