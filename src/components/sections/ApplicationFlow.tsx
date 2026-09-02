@@ -128,7 +128,7 @@ export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: Applicat
     } else if (isTech) {
       return !!(formData.name && formData.dob && formData.gender && formData.phone && formData.email && formData.address && formData.educationLevel && formData.emergencyContactName && formData.emergencyContactPhone && formData.learningObjectives && formData.techExperience && formData.preferredMode && formData.preferredSchedule && formData.hostelFacility && formData.declaration && activeProgramme);
     } else {
-      return !!(formData.name && formData.email && formData.phone && formData.dob && formData.gender && formData.address && formData.educationLevel && formData.previousSchool && formData.completionYear && formData.hostelFacility && activeProgramme);
+      return !!(formData.name && formData.email && formData.phone && formData.dob && formData.gender && formData.maritalStatus && formData.occupation && formData.religion && formData.pob && formData.nationality && formData.hometown && formData.address && formData.educationLevel && formData.previousSchool && formData.completionYear && formData.guardianName && formData.guardianPhone && formData.guardianOccupation && formData.guardianRelationship && formData.hostelFacility && formData.declaration && activeProgramme);
     }
   };
 
@@ -140,53 +140,33 @@ export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: Applicat
         </h3>
         <p className="text-brand-text-secondary dark:text-neutral-400">Fill in your details to begin the enrollment process.</p>
       </div>
-      
-      <div className="space-y-4">
-        <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Full Name</label>
-            <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Date of Birth</label>
-            <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Phone Number</label>
-            <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Email Address</label>
-            <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Hometown</label>
-            <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Nationality</label>
-            <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Year of Completion</label>
-            <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Guardian Name</label>
-            <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Guardian Phone Number</label>
-            <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Guardian Occupation</label>
-            <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Relationship</label>
-            <div className="relative group">
-          <BookOpen className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-400" />
-          <select
-            className="w-full pl-12 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium appearance-none text-sm"
-            value={activeProgramme ? activeProgramme.id : ""}
-            onChange={e => setActiveProgramme(programmes.find(p => p.id === e.target.value) || null)}
-          >
-            <option value="" disabled>Select a Programme</option>
-            {programmes.map(programme => (
-               <option key={programme.id} value={programme.id}>{programme.title}</option>
-            ))}
-          </select>
+
+      <div className="pt-2">
+        <div className="flex flex-col gap-1.5 mb-6">
+          <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Select Programme</label>
+          <div className="relative group">
+            <BookOpen className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+            <select
+              className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium appearance-none text-sm text-neutral-500 dark:text-neutral-400"
+              value={activeProgramme ? activeProgramme.id : ""}
+              onChange={e => setActiveProgramme(programmes.find(p => p.id === e.target.value) || null)}
+            >
+              <option value="" disabled>Select a Programme</option>
+              {programmes.map(programme => (
+                 <option key={programme.id} value={programme.id}>{programme.title}</option>
+              ))}
+            </select>
+          </div>
         </div>
-        
-      <div className="space-y-8">
-        {/* Personal Information */}
-        <div className="pt-2">
-          <h4 className="text-sm font-bold text-brand-text-primary dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2">
-            <User className="w-4 h-4 text-brand-primary" />
-            Personal Information
-          </h4>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="relative group md:col-span-2">
+
+        <h4 className="text-sm font-bold text-brand-text-primary dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+          <User className="w-4 h-4 text-brand-primary" />
+          Personal Information
+        </h4>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="flex flex-col gap-1.5 md:col-span-2">
+            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Full Name</label>
+            <div className="relative group">
               <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
               <input
                 type="text"
@@ -197,9 +177,11 @@ export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: Applicat
               />
             </div>
           </div>
-            
+          
+          <div className="flex flex-col gap-1.5">
+            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Gender</label>
             <div className="relative group">
-              <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+              <Users className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
               <select
                 className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium appearance-none text-sm text-neutral-500 dark:text-neutral-400"
                 value={formData.gender}
@@ -211,9 +193,12 @@ export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: Applicat
                 <option value="other">Other</option>
               </select>
             </div>
+          </div>
 
+          <div className="flex flex-col gap-1.5">
+            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Marital Status</label>
             <div className="relative group">
-              <Users className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+              <Heart className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
               <select
                 className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium appearance-none text-sm text-neutral-500 dark:text-neutral-400"
                 value={formData.maritalStatus}
@@ -226,7 +211,10 @@ export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: Applicat
                 <option value="widowed">Widowed</option>
               </select>
             </div>
+          </div>
 
+          <div className="flex flex-col gap-1.5">
+            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Occupation</label>
             <div className="relative group">
               <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
               <input
@@ -237,21 +225,25 @@ export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: Applicat
                 onChange={e => setFormData({ ...formData, occupation: e.target.value })}
               />
             </div>
+          </div>
 
+          <div className="flex flex-col gap-1.5">
+            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Date of Birth</label>
             <div className="relative group">
               <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
               <input
                 type="date"
-                placeholder="Date of Birth"
-                className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm"
+                className="w-full pl-11 pr-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium text-sm text-neutral-500 dark:text-neutral-400"
                 value={formData.dob}
                 onChange={e => setFormData({ ...formData, dob: e.target.value })}
               />
             </div>
           </div>
-
-            <div className="relative group md:col-span-2">
-              <Heart className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+          
+          <div className="flex flex-col gap-1.5 md:col-span-2">
+            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Religion</label>
+            <div className="relative group">
+              <BookOpen className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
               <input
                 type="text"
                 placeholder="Religion"
@@ -262,14 +254,17 @@ export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: Applicat
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Origin & Nationality */}
-        <div className="pt-6 border-t border-neutral-100 dark:border-neutral-800">
-          <h4 className="text-sm font-bold text-brand-text-primary dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2">
-            <Flag className="w-4 h-4 text-brand-primary" />
-            Nationality
-          </h4>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {/* Origin & Nationality */}
+      <div className="pt-6 border-t border-neutral-100 dark:border-neutral-800">
+        <h4 className="text-sm font-bold text-brand-text-primary dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+          <Flag className="w-4 h-4 text-brand-primary" />
+          Origin & Nationality
+        </h4>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="flex flex-col gap-1.5">
+            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Place of Birth</label>
             <div className="relative group">
               <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
               <input
@@ -280,7 +275,10 @@ export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: Applicat
                 onChange={e => setFormData({ ...formData, pob: e.target.value })}
               />
             </div>
+          </div>
 
+          <div className="flex flex-col gap-1.5">
+            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Nationality</label>
             <div className="relative group">
               <Flag className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
               <input
@@ -293,7 +291,9 @@ export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: Applicat
             </div>
           </div>
 
-            <div className="relative group md:col-span-2">
+          <div className="flex flex-col gap-1.5 md:col-span-2">
+            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Hometown</label>
+            <div className="relative group">
               <Home className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
               <input
                 type="text"
@@ -304,16 +304,18 @@ export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: Applicat
               />
             </div>
           </div>
-          </div>
         </div>
+      </div>
 
-        {/* Contact Information */}
-        <div className="pt-6 border-t border-neutral-100 dark:border-neutral-800">
-          <h4 className="text-sm font-bold text-brand-text-primary dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2">
-            <Mail className="w-4 h-4 text-brand-primary" />
-            Contact Information
-          </h4>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {/* Contact Information */}
+      <div className="pt-6 border-t border-neutral-100 dark:border-neutral-800">
+        <h4 className="text-sm font-bold text-brand-text-primary dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+          <Mail className="w-4 h-4 text-brand-primary" />
+          Contact Information
+        </h4>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="flex flex-col gap-1.5">
+            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Email Address</label>
             <div className="relative group">
               <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
               <input
@@ -325,7 +327,9 @@ export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: Applicat
               />
             </div>
           </div>
-            
+          
+          <div className="flex flex-col gap-1.5">
+            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Phone Number</label>
             <div className="relative group">
               <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
               <input
@@ -338,7 +342,9 @@ export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: Applicat
             </div>
           </div>
 
-            <div className="relative group md:col-span-2">
+          <div className="flex flex-col gap-1.5 md:col-span-2">
+            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Residential Address</label>
+            <div className="relative group">
               <MapPin className="absolute left-4 top-4 w-4 h-4 text-neutral-400" />
               <textarea
                 placeholder="Residential Address"
@@ -350,15 +356,18 @@ export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: Applicat
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Education Background Section */}
-        <div className="md:col-span-2 pt-6 border-t border-neutral-100 dark:border-neutral-800">
-          <h4 className="text-sm font-bold text-brand-text-primary dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2">
-            <GraduationCap className="w-4 h-4 text-brand-primary" />
-            Education Background
-          </h4>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="relative group md:col-span-2">
+      {/* Education Background Section */}
+      <div className="pt-6 border-t border-neutral-100 dark:border-neutral-800">
+        <h4 className="text-sm font-bold text-brand-text-primary dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+          <GraduationCap className="w-4 h-4 text-brand-primary" />
+          Education Background
+        </h4>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="flex flex-col gap-1.5 md:col-span-2">
+            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Level of Education</label>
+            <div className="relative group">
               <BookOpen className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
               <input
                 type="text"
@@ -368,6 +377,10 @@ export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: Applicat
                 onChange={e => setFormData({ ...formData, educationLevel: e.target.value })}
               />
             </div>
+          </div>
+          
+          <div className="flex flex-col gap-1.5">
+            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Previous School</label>
             <div className="relative group">
               <Home className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
               <input
@@ -378,6 +391,10 @@ export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: Applicat
                 onChange={e => setFormData({ ...formData, previousSchool: e.target.value })}
               />
             </div>
+          </div>
+          
+          <div className="flex flex-col gap-1.5">
+            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Year of Completion</label>
             <div className="relative group">
               <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
               <input
@@ -389,16 +406,18 @@ export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: Applicat
               />
             </div>
           </div>
-          </div>
         </div>
+      </div>
 
-        {/* Parent/Guardian Section */}
-        <div className="md:col-span-2 pt-6 border-t border-neutral-100 dark:border-neutral-800">
-          <h4 className="text-sm font-bold text-brand-text-primary dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2">
-            <ShieldHalf className="w-4 h-4 text-brand-primary" />
-            Parent / Guardian Information
-          </h4>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {/* Parent/Guardian Section */}
+      <div className="pt-6 border-t border-neutral-100 dark:border-neutral-800">
+        <h4 className="text-sm font-bold text-brand-text-primary dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+          <ShieldHalf className="w-4 h-4 text-brand-primary" />
+          Parent / Guardian Information
+        </h4>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="flex flex-col gap-1.5">
+            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Guardian Name</label>
             <div className="relative group">
               <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
               <input
@@ -410,6 +429,9 @@ export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: Applicat
               />
             </div>
           </div>
+          
+          <div className="flex flex-col gap-1.5">
+            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Guardian Phone</label>
             <div className="relative group">
               <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
               <input
@@ -421,6 +443,9 @@ export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: Applicat
               />
             </div>
           </div>
+          
+          <div className="flex flex-col gap-1.5">
+            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Guardian Occupation</label>
             <div className="relative group">
               <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
               <input
@@ -432,6 +457,9 @@ export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: Applicat
               />
             </div>
           </div>
+          
+          <div className="flex flex-col gap-1.5">
+            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Relationship</label>
             <div className="relative group">
               <Users className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
               <input
@@ -443,9 +471,41 @@ export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: Applicat
               />
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Training Information */}
+      <div className="pt-6 border-t border-neutral-100 dark:border-neutral-800">
+        <h4 className="text-sm font-bold text-brand-text-primary dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+          <Flag className="w-4 h-4 text-brand-primary" />
+          Training Information
+        </h4>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="flex flex-col gap-1.5 md:col-span-2">
+            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Accommodation</label>
+            <div className="relative group">
+              <select className="w-full px-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium appearance-none text-sm text-neutral-500 dark:text-neutral-400" value={formData.hostelFacility} onChange={e => setFormData({ ...formData, hostelFacility: e.target.value })}>
+                <option value="" disabled>Do you need a hostel facility?</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
+      
+      <div className="pt-6 border-t border-neutral-100 dark:border-neutral-800">
+        <label className="flex items-start gap-3 cursor-pointer group">
+          <div className="relative flex items-center justify-center mt-1">
+            <input type="checkbox" className="sr-only" checked={formData.declaration} onChange={e => setFormData({ ...formData, declaration: e.target.checked })} />
+            <div className={`w-5 h-5 rounded border flex items-center justify-center transition-colors ${formData.declaration ? "bg-brand-primary border-brand-primary" : "border-neutral-300 dark:border-neutral-600 group-hover:border-brand-primary"}`}>
+              {formData.declaration && <CheckCircle className="w-3.5 h-3.5 text-white" />}
+            </div>
+          </div>
+          <span className="text-sm text-brand-text-secondary dark:text-neutral-400 leading-relaxed">
+            I hereby declare that the information provided in this application form is true and accurate to the best of my knowledge. I understand that providing false information may affect my admission into the training program.
+          </span>
+        </label>
       </div>
 
       <button

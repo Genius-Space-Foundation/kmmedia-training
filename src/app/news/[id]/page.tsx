@@ -5,8 +5,9 @@ import { ArrowLeft, Calendar, User, Tag } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { newsItems } from "@/data/news";
+import { ShareButton } from "@/components/ui/ShareButton";
 
-interface PageProps {
+export interface PageProps {
   params: Promise<{ id: string }>;
 }
 
@@ -37,10 +38,14 @@ export default async function NewsArticlePage({ params }: PageProps) {
       <div className="flex-1 pt-24 md:pt-32 pb-20">
         <article className="max-w-4xl mx-auto px-4 md:px-10">
           
-          <Link href="/news" className="inline-flex items-center gap-2 text-sm font-bold text-brand-text-secondary dark:text-neutral-400 hover:text-brand-primary transition-colors mb-8 group">
-            <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" />
-            Back to News
-          </Link>
+          <div className="flex items-center justify-between mb-8">
+            <Link href="/news" className="inline-flex items-center gap-2 text-sm font-bold text-brand-text-secondary dark:text-neutral-400 hover:text-brand-primary transition-colors group">
+              <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" />
+              Back to News
+            </Link>
+            
+            <ShareButton title={news.title} />
+          </div>
 
           <div className="space-y-6 mb-10">
             <div className="flex flex-wrap items-center gap-4">
