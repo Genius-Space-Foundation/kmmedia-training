@@ -10,10 +10,10 @@ export interface NewsItem {
 
 export const newsItems: NewsItem[] = [
   {
-    id: "september-admission-2025",
+    id: "september-admission-2025/2026",
     title: "YOUR DREAM IN MEDIA STARTS THIS SEPTEMBER – AND WE'RE READY FOR YOU!",
     category: "Admissions",
-    date: "September 02, 2024",
+    date: "September 02, 2026",
     image: "/images/september-admission.jpg",
     excerpt: "Have you always dreamed of being behind the camera, on radio, on TV, or creating content that the whole Ghana watches? Admission is now open for September.",
     content: `
