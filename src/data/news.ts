@@ -10,6 +10,47 @@ export interface NewsItem {
 
 export const newsItems: NewsItem[] = [
   {
+    id: "september-admission-2025",
+    title: "YOUR DREAM IN MEDIA STARTS THIS SEPTEMBER – AND WE'RE READY FOR YOU!",
+    category: "Admissions",
+    date: "September 02, 2024",
+    image: "/images/september-admission.jpg",
+    excerpt: "Have you always dreamed of being behind the camera, on radio, on TV, or creating content that the whole Ghana watches? Admission is now open for September.",
+    content: `
+      <p><strong>🎙️ YOUR DREAM IN MEDIA STARTS THIS SEPTEMBER – AND WE'RE READY FOR YOU!</strong></p>
+      <p>Have you always dreamed of being behind the camera, on radio, on TV, or creating content that the whole Ghana watches?</p>
+      <p>At <strong>KM MEDIA TRAINING INSTITUTE</strong>, we don't just teach media — we live it.</p>
+      <p>Since 2018, we've been that Great institute in Accra, Sogakope and Akatsi where passion meets practice. No long boring theory. Just you, a camera in your hand, a mic in front of you, and real industry people guiding you every step.</p>
+      
+      <h3>This September, we are opening our doors again for YOU.</h3>
+      <p>Whether you just completed SHS, you're 25+ and want to switch careers, or you've always loved media but never had the chance — there is a place for you here.</p>
+      
+      <h3>Come learn what you love:</h3>
+      <p>If it's News, we have Journalism & Broadcast Journalism. If you love to talk, try Radio & TV Presenting. If you see stories in pictures, join Photography, Video Editing, or TV & Film Production. If you're the creative who loves design, sound, or social media — we have Graphic Design, Sound Engineering, Digital Marketing, Content Creation & Live Streaming, PR, and even Fashion Design. Computer literacy (I.C.T), Software engineering and Robotics for kids.</p>
+      <p><strong>15+ courses. One goal: To make you job-ready.</strong></p>
+      
+      <h3>Why students love KM MEDIA:</h3>
+      <p>Because we are accredited, yes. But more importantly, because we believe in you. We teach you with the same cameras and equipment used on real TV sets. Our lecturers are people you already hear on radio and see on TV. And when you're done, we don't leave you — we guide you to internships and jobs.</p>
+      <p>We are in Accra, Sogakope and Akatsi, but our students come from everywhere because creativity has no location.</p>
+      
+      <div style="background: rgba(37, 99, 235, 0.1); border-left: 4px solid #2563eb; padding: 1rem; margin: 2rem 0; border-radius: 0 0.5rem 0.5rem 0;">
+        <p style="margin: 0;"><strong>September 2025/2026 Admission is OPEN. Slots are limited.</strong></p>
+        <p style="margin: 0.5rem 0 0 0;">Don't wait for next year to chase that dream.</p>
+      </div>
+      
+      <p><em>KM MEDIA TRAINING INSTITUTE – Creativity is our Hallmark. Empowering Media Professionals.</em></p>
+      
+      <div style="margin-top: 3rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+        <a href="https://wa.me/233555587754?text=I'm%20interested%20in%20the%20September%20admissions!" target="_blank" rel="noopener noreferrer" style="background: #25d366; color: white; padding: 0.75rem 1.5rem; border-radius: 0.5rem; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 0.5rem;">
+          Chat on WhatsApp
+        </a>
+        <a href="/programmes" style="background: #2563eb; color: white; padding: 0.75rem 1.5rem; border-radius: 0.5rem; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 0.5rem;">
+          View All Programmes
+        </a>
+      </div>
+    `
+  },
+  {
     id: "robotics-lab",
     title: "New Robotics Lab Inaugurated for Tech Programmes",
     category: "Campus News",
