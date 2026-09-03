@@ -68,6 +68,7 @@ export default async function NewsArticlePage({ params }: PageProps) {
               src={news.image} 
               alt={news.title}
               fill
+              sizes="(max-width: 1024px) 100vw, 1024px"
               className="object-cover"
               priority
             />

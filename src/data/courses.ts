@@ -19,6 +19,36 @@ export type Course = Programme;
 export const programmes: Programme[] = [
   // Media - 6 months (Professional Certificate)
   {
+    id: "broadcast-journalism",
+    title: "Broadcast Journalism",
+    description: "Master the art of storytelling for TV, radio, and digital platforms.",
+    longDescription: "This comprehensive course covers everything from news gathering and scriptwriting to on-camera presentation and digital reporting. Students will gain hands-on experience in our state-of-the-art studio and learn from industry professionals.",
+    duration: "6 Months",
+    category: "Media Programmes",
+    requirements: [
+      "WASSCE / SSCE or any Certificate",
+      "Good command of English",
+      "Passion for storytelling",
+      "Matured applicants (25+) should be able to read, write and understand"
+    ],
+    opportunities: [
+      "News Reporter",
+      "TV/Radio Presenter",
+      "Content Producer",
+      "Digital Journalist"
+    ],
+    modules: [
+      "Radio & Television Broadcast Journalism (News, Sports & General Presentation)",
+      "Disc Jockeying",
+      "Basic Camera Handling, Video Editing & Graphic Designing",
+      "Basic Sound Production (Voice Recording, Editing & Mixing)",
+      "Media Marketing, PR and Communication"
+    ],
+    image: "/images/3.jpeg",
+    price: "GHS 3,000.00",
+    certificate: "Professional Certificate"
+  },
+  {
     id: "sound-engineering",
     title: "Sound Engineering",
     description: "Learn the technical aspects of sound recording, mixing, and mastering.",
@@ -107,36 +137,7 @@ export const programmes: Programme[] = [
     price: "GHS 3,500.00",
     certificate: "Professional Certificate"
   },
-  {
-    id: "broadcast-journalism",
-    title: "Broadcast Journalism",
-    description: "Master the art of storytelling for TV, radio, and digital platforms.",
-    longDescription: "This comprehensive course covers everything from news gathering and scriptwriting to on-camera presentation and digital reporting. Students will gain hands-on experience in our state-of-the-art studio and learn from industry professionals.",
-    duration: "6 Months",
-    category: "Media Programmes",
-    requirements: [
-      "WASSCE / SSCE or any Certificate",
-      "Good command of English",
-      "Passion for storytelling",
-      "Matured applicants (25+) should be able to read, write and understand"
-    ],
-    opportunities: [
-      "News Reporter",
-      "TV/Radio Presenter",
-      "Content Producer",
-      "Digital Journalist"
-    ],
-    modules: [
-      "Radio & Television Broadcast Journalism (News, Sports & General Presentation)",
-      "Disc Jockeying",
-      "Basic Camera Handling, Video Editing & Graphic Designing",
-      "Basic Sound Production (Voice Recording, Editing & Mixing)",
-      "Media Marketing, PR and Communication"
-    ],
-    image: "/images/3.jpeg",
-    price: "GHS 3,000.00",
-    certificate: "Professional Certificate"
-  },
+
 
   // Media - 3 months (Certificate of Completion)
   {
@@ -276,7 +277,7 @@ export const programmes: Programme[] = [
       "Copywriting & Storytelling",
       "Monetization & Brand Deals"
     ],
-    image: "/images/4.jpg",
+    image: "/images/content.jpeg",
     price: "GHS 1,000.00",
     certificate: "Certificate of Completion"
   },

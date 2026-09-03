@@ -152,7 +152,7 @@ export function CourseModal({ programme, isOpen, onClose, onApply }: ProgrammeMo
                                     <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand-primary/10 rounded-lg">
                                        <FileText className="w-3.5 h-3.5 text-brand-primary" />
                                        <p className="text-xs text-brand-primary font-bold">
-                                          ({programme.price} {isSemesterBased ? "per semester" : "- Installments available"})
+                                          ({programme.price} {isSemesterBased ? "per semester" : "- Installment payment plan available"})
                                        </p>
                                     </div>
                                  </div>

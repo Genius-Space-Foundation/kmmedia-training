@@ -55,6 +55,7 @@ export default function ProgrammesPage() {
             src="/images/3.jpeg" 
             alt="Academic Catalog Background"
             fill
+            sizes="100vw"
             className="object-cover opacity-20 mix-blend-luminosity grayscale"
             priority
           />
@@ -284,6 +285,7 @@ export default function ProgrammesPage() {
                         src={programme.image} 
                         alt={programme.title}
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="object-cover group-hover:scale-105 transition-transform duration-700"
                       />
                       <div className="absolute top-4 left-4 flex flex-col gap-2">
@@ -343,6 +345,7 @@ export default function ProgrammesPage() {
                         src={programme.image} 
                         alt={programme.title}
                         fill
+                        sizes="(max-width: 1024px) 100vw, 300px"
                         className="object-cover group-hover:scale-105 transition-transform duration-700"
                       />
                       <div className="absolute top-4 left-4 flex flex-col gap-2">
