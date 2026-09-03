@@ -10,7 +10,7 @@ export interface NewsItem {
 
 export const newsItems: NewsItem[] = [
   {
-    id: "september-admission-2025/2026",
+    id: "september-admission-2025-2026",
     title: "YOUR DREAM IN MEDIA STARTS THIS SEPTEMBER – AND WE'RE READY FOR YOU!",
     category: "Admissions",
     date: "September 02, 2026",

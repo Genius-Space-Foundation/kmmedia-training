@@ -77,6 +77,7 @@ export function AboutUs() {
                         src="/images/nasia.png" 
                         alt="NaSIA Logo" 
                         fill 
+                        sizes="48px"
                         className="object-contain p-1.5"
                      />
                   </div>
@@ -99,6 +100,7 @@ export function AboutUs() {
                         src="/images/freedom.jpeg" 
                         alt="Freedom FM Logo" 
                         fill 
+                        sizes="48px"
                         className="object-contain p-1.5"
                      />
                   </div>
@@ -120,6 +122,7 @@ export function AboutUs() {
                         src="/images/registrar.png" 
                         alt="Registrar of Companies Logo" 
                         fill 
+                        sizes="48px"
                         className="object-contain p-1.5"
                      />
                   </div>
