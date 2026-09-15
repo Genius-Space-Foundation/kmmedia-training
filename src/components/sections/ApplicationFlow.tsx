@@ -128,7 +128,7 @@ export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: Applicat
     } else if (isTech) {
       return !!(formData.name && formData.dob && formData.gender && formData.phone && formData.email && formData.address && formData.educationLevel && formData.emergencyContactName && formData.emergencyContactPhone && formData.learningObjectives && formData.techExperience && formData.preferredMode && formData.preferredSchedule && formData.hostelFacility && formData.declaration && activeProgramme);
     } else {
-      return !!(formData.name && formData.email && formData.phone && formData.dob && formData.gender && formData.maritalStatus && formData.occupation && formData.religion && formData.pob && formData.nationality && formData.hometown && formData.address && formData.educationLevel && formData.previousSchool && formData.completionYear && formData.guardianName && formData.guardianPhone && formData.guardianOccupation && formData.guardianRelationship && formData.hostelFacility && formData.declaration && activeProgramme);
+      return !!(formData.name && formData.email && formData.phone && formData.dob && formData.gender && formData.maritalStatus && formData.occupation && formData.religion && formData.pob && formData.nationality && formData.hometown && formData.address && formData.educationLevel && formData.previousSchool && formData.completionYear && formData.guardianName && formData.guardianPhone && formData.guardianOccupation && formData.guardianRelationship && formData.preferredMode && formData.hostelFacility && formData.declaration && activeProgramme);
     }
   };
 
@@ -481,7 +481,30 @@ export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: Applicat
           Training Information
         </h4>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="flex flex-col gap-1.5 md:col-span-2">
+          <div className="flex flex-col gap-1.5">
+            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Training Mode</label>
+            <div className="relative group">
+              <select
+                className="w-full px-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium appearance-none text-sm text-neutral-500 dark:text-neutral-400"
+                value={formData.preferredMode}
+                onChange={e => {
+                  const val = e.target.value;
+                  setFormData({
+                    ...formData,
+                    preferredMode: val,
+                    preferredSchedule: val.includes("Weekend") ? "Weekend" : "Weekday"
+                  });
+                }}
+              >
+                <option value="" disabled>Select Training Mode</option>
+                <option value="Weekend Online">Weekend Online</option>
+                <option value="Weekend In-Person">Weekend In-Person</option>
+                <option value="Weekday Online">Weekday Online</option>
+                <option value="Weekday In-Person">Weekday In-Person</option>
+              </select>
+            </div>
+          </div>
+          <div className="flex flex-col gap-1.5">
             <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Accommodation</label>
             <div className="relative group">
               <select className="w-full px-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium appearance-none text-sm text-neutral-500 dark:text-neutral-400" value={formData.hostelFacility} onChange={e => setFormData({ ...formData, hostelFacility: e.target.value })}>
@@ -659,28 +682,29 @@ export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: Applicat
         </h4>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Preferred Mode</label>
+            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Training Mode</label>
             <div className="relative group">
-              <select className="w-full px-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium appearance-none text-sm text-neutral-500 dark:text-neutral-400" value={formData.preferredMode} onChange={e => setFormData({ ...formData, preferredMode: e.target.value })}>
-                <option value="" disabled>Preferred Learning Mode</option>
-                <option value="Physical">Physical</option>
-                <option value="Online">Online</option>
-                <option value="Hybrid">Hybrid</option>
+              <select
+                className="w-full px-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium appearance-none text-sm text-neutral-500 dark:text-neutral-400"
+                value={formData.preferredMode}
+                onChange={e => {
+                  const val = e.target.value;
+                  setFormData({
+                    ...formData,
+                    preferredMode: val,
+                    preferredSchedule: val.includes("Weekend") ? "Weekend" : "Weekday"
+                  });
+                }}
+              >
+                <option value="" disabled>Select Training Mode</option>
+                <option value="Weekend Online">Weekend Online</option>
+                <option value="Weekend In-Person">Weekend In-Person</option>
+                <option value="Weekday Online">Weekday Online</option>
+                <option value="Weekday In-Person">Weekday In-Person</option>
               </select>
             </div>
           </div>
           <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Preferred Schedule</label>
-            <div className="relative group">
-              <select className="w-full px-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium appearance-none text-sm text-neutral-500 dark:text-neutral-400" value={formData.preferredSchedule} onChange={e => setFormData({ ...formData, preferredSchedule: e.target.value })}>
-                <option value="" disabled>Preferred Training Schedule</option>
-                <option value="Weekday">Weekday</option>
-                <option value="Weekend">Weekend</option>
-                <option value="Evening">Evening</option>
-              </select>
-            </div>
-          </div>
-          <div className="flex flex-col gap-1.5 md:col-span-2">
             <label className="text-xs font-bold text-neutral-500 dark:text-neutral-400 ml-1 uppercase tracking-wider">Accommodation</label>
             <div className="relative group">
               <select className="w-full px-4 py-3 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium appearance-none text-sm text-neutral-500 dark:text-neutral-400" value={formData.hostelFacility} onChange={e => setFormData({ ...formData, hostelFacility: e.target.value })}>
