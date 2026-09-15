@@ -128,8 +128,8 @@ export async function POST(req: Request) {
 
           <h3 style="color: #444; margin-top: 25px; border-left: 4px solid #0994c4; padding-left: 10px;">Training Information</h3>
           <table style="width: 100%; border-collapse: collapse;">
-            <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px; font-weight: bold; width: 40%; color: #555;">Preferred Mode</td><td style="padding: 10px;">${preferredMode}</td></tr>
-            <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px; font-weight: bold; color: #555;">Preferred Schedule</td><td style="padding: 10px;">${preferredSchedule}</td></tr>
+            <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px; font-weight: bold; width: 40%; color: #555;">Training Mode</td><td style="padding: 10px;">${preferredMode || "Not specified"}</td></tr>
+            <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px; font-weight: bold; color: #555;">Hostel Facility Required</td><td style="padding: 10px;">${hostelFacility || "Not specified"}</td></tr>
           </table>
 
           <h3 style="color: #444; margin-top: 25px; border-left: 4px solid #0994c4; padding-left: 10px;">Payment Information</h3>
@@ -172,9 +172,10 @@ export async function POST(req: Request) {
             <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px; font-weight: bold; color: #555;">Year of Completion</td><td style="padding: 10px;">${completionYear}</td></tr>
           </table>
 
-          <h3 style="color: #444; margin-top: 25px; border-left: 4px solid #0994c4; padding-left: 10px;">Accommodation</h3>
+          <h3 style="color: #444; margin-top: 25px; border-left: 4px solid #0994c4; padding-left: 10px;">Training Information</h3>
           <table style="width: 100%; border-collapse: collapse;">
-            <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px; font-weight: bold; width: 40%; color: #555;">Hostel Facility Required</td><td style="padding: 10px;">${hostelFacility}</td></tr>
+            <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px; font-weight: bold; width: 40%; color: #555;">Training Mode</td><td style="padding: 10px;">${preferredMode || "Not specified"}</td></tr>
+            <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px; font-weight: bold; color: #555;">Hostel Facility Required</td><td style="padding: 10px;">${hostelFacility || "Not specified"}</td></tr>
           </table>
 
           <h3 style="color: #444; margin-top: 25px; border-left: 4px solid #0994c4; padding-left: 10px;">Parent / Guardian Information</h3>
