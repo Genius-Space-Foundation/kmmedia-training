@@ -8,47 +8,32 @@ import { GraduationCap, ArrowRight, CheckCircle } from "lucide-react";
 
 export function Hero() {
   const [index, setIndex] = useState(0);
-  const staticText = "Master Your Creative Future in";
-  const [displayText, setDisplayText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [typingSpeed, setTypingSpeed] = useState(100);
+  const [isPaused, setIsPaused] = useState(false);
 
-  const dynamicWords = [
-    "Modern Media.",
-    "Creative Design.",
-    "Modern Fashion.",
-    "Digital Skills."
+  const heroPhrases = [
+    {
+      lead: "Be on Radio",
+      highlight: "In 24 Weeks"
+    },
+    {
+      lead: "Become a Web or Mobile App Developer",
+      highlight: "In 24 Weeks."
+    },
+    {
+      lead: "Your Child Can Build Robots At Age 10",
+      highlight: "In 12 Weeks"
+    }
   ];
 
   useEffect(() => {
-    const currentWord = dynamicWords[index];
-    
-    const handleTyping = () => {
-      if (!isDeleting) {
-        setDisplayText(currentWord.substring(0, displayText.length + 1));
-        setTypingSpeed(100);
+    if (isPaused) return;
 
-        if (displayText === currentWord) {
-          setTypingSpeed(2000); // Wait before deleting
-          setIsDeleting(true);
-        }
-      } else {
-        setDisplayText(currentWord.substring(0, displayText.length - 1));
-        setTypingSpeed(50);
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % heroPhrases.length);
+    }, 3800);
 
-        if (displayText === "") {
-          setIsDeleting(false);
-          setIndex((prev: number) => (prev + 1) % dynamicWords.length);
-          setTypingSpeed(500); // Wait before typing next
-        }
-      }
-    };
-
-    const timer = setTimeout(handleTyping, typingSpeed);
-    return () => clearTimeout(timer);
-  }, [displayText, isDeleting, index, typingSpeed, dynamicWords]);
-
-
+    return () => clearInterval(timer);
+  }, [index, isPaused, heroPhrases.length]);
 
   const partners = [
     {
@@ -93,14 +78,44 @@ export function Hero() {
           <span>Accredited Media Training Institute</span>
         </motion.div>
 
-        <div className="h-[120px] md:h-[180px] lg:h-[220px] flex items-center justify-center w-full mb-8">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] max-w-4xl drop-shadow-lg text-center">
-            {staticText} <br className="hidden md:block" />
-            <span className="text-brand-primary brightness-125 min-h-[1em] inline-block">
-              {displayText}
-              <span className="animate-pulse ml-1 inline-block w-[3px] h-[0.8em] bg-brand-primary align-middle" />
-            </span>
-          </h1>
+        {/* Dynamic Swapping Hero Title */}
+        <div 
+          className="min-h-[140px] sm:min-h-[160px] md:min-h-[180px] lg:min-h-[210px] flex items-center justify-center w-full mb-4 px-2"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <AnimatePresence mode="wait">
+            <motion.h1
+              key={index}
+              initial={{ opacity: 0, y: 22, filter: "blur(4px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              exit={{ opacity: 0, y: -22, filter: "blur(4px)" }}
+              transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.12] max-w-4xl drop-shadow-lg text-center tracking-tight"
+            >
+              <span>{heroPhrases[index].lead} </span>
+              <span className="text-brand-secondary brightness-125 inline-block">
+                {heroPhrases[index].highlight}
+              </span>
+            </motion.h1>
+          </AnimatePresence>
+        </div>
+
+        {/* Indicator dots to see and pick phrases */}
+        <div className="flex items-center justify-center gap-2.5 mb-8">
+          {heroPhrases.map((phrase, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => setIndex(i)}
+              aria-label={`Go to phrase: ${phrase.lead} ${phrase.highlight}`}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                index === i 
+                  ? "w-8 bg-brand-secondary" 
+                  : "w-2.5 bg-white/30 hover:bg-white/60"
+              }`}
+            />
+          ))}
         </div>
 
         <motion.p
