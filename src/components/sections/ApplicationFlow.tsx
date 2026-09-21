@@ -933,11 +933,11 @@ export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: Applicat
 
       <div className="bg-neutral-50 dark:bg-neutral-800 p-6 rounded-2xl border border-neutral-100 dark:border-neutral-700 mb-8 max-w-sm mx-auto">
          <div className="flex justify-between items-center mb-3">
-            <span className="text-sm text-neutral-500 font-medium">Programme fee Per first semester</span>
+            <span className="text-sm text-neutral-500 font-medium">Course Tuition Fee</span>
             <span className="font-bold dark:text-white">{activeProgramme?.price}</span>
          </div>
          <div className="flex justify-between items-center border-t border-neutral-200 dark:border-neutral-700 pt-3">
-            <span className="text-base font-bold text-brand-text-primary dark:text-white">To Pay Now</span>
+            <span className="text-base font-bold text-brand-text-primary dark:text-white">Application Fee (Pay Now)</span>
             <span className="text-xl font-bold text-brand-primary">GHS {paymentAmount.toFixed(2)}</span>
          </div>
       </div>

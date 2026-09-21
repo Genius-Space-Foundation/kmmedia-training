@@ -306,10 +306,13 @@ export default function ProgrammesPage() {
                         {programme.description}
                       </p>
 
-                      <div className="flex items-center gap-4 text-sm font-semibold text-neutral-600 dark:text-neutral-300 mb-6 bg-neutral-50 dark:bg-neutral-900/50 p-4 rounded-2xl">
+                      <div className="flex items-center justify-between text-sm font-semibold text-neutral-600 dark:text-neutral-300 mb-6 bg-neutral-50 dark:bg-neutral-900/50 p-4 rounded-2xl">
                         <div className="flex items-center gap-2">
                           <Clock size={16} className="text-brand-secondary" />
                           <span>{programme.duration}</span>
+                        </div>
+                        <div className="font-extrabold text-brand-primary bg-brand-primary/10 px-3 py-1 rounded-xl text-xs">
+                          {programme.price}
                         </div>
                       </div>
 
@@ -369,6 +372,9 @@ export default function ProgrammesPage() {
                             <span className="flex items-center gap-1.5 bg-neutral-100 dark:bg-neutral-700 px-3 py-1 rounded-lg">
                               <Clock size={14} className="text-brand-primary" />
                               {programme.duration}
+                            </span>
+                            <span className="flex items-center gap-1.5 bg-brand-primary/10 text-brand-primary font-bold px-3 py-1 rounded-lg">
+                              {programme.price}
                             </span>
                           </div>
                         </div>

@@ -116,18 +116,17 @@ export function CourseListing({ onSelectProgramme, limit, hideFilters = false, s
                   {programme.description}
                 </p>
 
-                <div className="grid grid-cols-2 gap-4 py-4 border-t border-neutral-100 dark:border-neutral-800">
+                <div className="flex items-center justify-between py-4 border-t border-neutral-100 dark:border-neutral-800">
                   <div className="flex items-center gap-2">
                     <div className="p-1.5 bg-neutral-100 dark:bg-neutral-800 rounded-lg">
                       <Clock className="w-4 h-4 text-brand-primary" />
                     </div>
                     <span className="text-xs font-semibold dark:text-neutral-300">{programme.duration}</span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <div className="p-1.5 bg-neutral-100 dark:bg-neutral-800 rounded-lg">
-                      <Award className="w-4 h-4 text-brand-primary" />
-                    </div>
-                    <span className="text-xs font-semibold dark:text-neutral-300 line-clamp-1">{programme.certificate}</span>
+                  <div className="flex items-center">
+                    <span className="text-xs font-extrabold text-brand-primary bg-brand-primary/10 px-2.5 py-1 rounded-lg">
+                      {programme.price}
+                    </span>
                   </div>
                 </div>
 
