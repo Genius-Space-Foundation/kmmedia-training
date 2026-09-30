@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { usePaystackPayment } from "react-paystack";
+import { mirrorToLms } from "@/lib/lms";
 import { Programme, programmes } from "@/data/courses";
 import { X, CheckCircle, CreditCard, Send, User, Mail, Phone, ArrowRight, BookOpen, Calendar, MapPin, Flag, Users, Briefcase, Home, Heart, ShieldHalf, GraduationCap } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -105,6 +106,15 @@ export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: Applicat
       if (!response.ok) {
         throw new Error("Failed to submit application. Please contact support.");
       }
+
+      // Mirror the application into the LMS (fire-and-forget; never blocks the
+      // public flow — see src/lib/lms.ts).
+      void mirrorToLms({
+        ...formData,
+        course: activeProgramme?.title,
+        program_slug: activeProgramme?.id,
+        reference,
+      });
 
       setStep("success");
     } catch (err) {

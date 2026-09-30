@@ -27,6 +27,7 @@ export function Navbar({ onApplyClick }: { onApplyClick?: () => void }) {
     { name: "Programmes", href: "/programmes" },
     { name: "About Us", href: "/about" },
     { name: "News & Events", href: "/news" },
+    { name: "Gallery", href: "/gallery" },
     { name: "Contact", href: "/contact" },
   ];
 
