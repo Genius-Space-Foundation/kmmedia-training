@@ -258,7 +258,7 @@ export const programmes: Programme[] = [
     ],
     image: "/images/5.jpg",
     price: "GH¢1,200.00",
-    applicationFee: "GH¢50.00",
+    applicationFee: "GH¢100.00",
     certificate: "Certificate of Completion"
   },
   {
@@ -287,7 +287,7 @@ export const programmes: Programme[] = [
     ],
     image: "/images/content.jpeg",
     price: "GH¢1,000.00",
-    applicationFee: "GH¢50.00",
+    applicationFee: "GH¢100.00",
     certificate: "Certificate of Completion"
   },
 
@@ -384,7 +384,7 @@ export const programmes: Programme[] = [
     ],
     image: "/images/3.jpeg",
     price: "GH¢1,650.00",
-    applicationFee: "GH¢50.00",
+    applicationFee: "GH¢100.00",
     certificate: "Professional Certificate"
   },
   {
@@ -415,7 +415,7 @@ export const programmes: Programme[] = [
     ],
     image: "/images/5.jpg",
     price: "GH¢2,800.00",
-    applicationFee: "GH¢50.00",
+    applicationFee: "GH¢100.00",
     certificate: "Professional Certificate"
   },
   {
@@ -444,7 +444,7 @@ export const programmes: Programme[] = [
     ],
     image: "/images/5.jpg",
     price: "GH¢1,800.00",
-    applicationFee: "GH¢50.00",
+    applicationFee: "GH¢100.00",
     certificate: "Professional Certificate"
   },
   {
@@ -473,7 +473,7 @@ export const programmes: Programme[] = [
     ],
     image: "/images/3.jpeg",
     price: "GH¢3,200.00",
-    applicationFee: "GH¢50.00",
+    applicationFee: "GH¢100.00",
     certificate: "Professional Certificate"
   }
 ];

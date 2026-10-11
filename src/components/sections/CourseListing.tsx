@@ -4,7 +4,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Search, Filter, BookOpen, Clock, Award, Star, ArrowRight } from "lucide-react";
-import { programmes, Programme } from "@/data/courses";
+import { Programme } from "@/data/courses";
+import { useLiveProgrammes } from "@/lib/useProgrammes";
 import Link from "next/link";
 
 interface ProgrammeListingProps {
@@ -17,6 +18,8 @@ interface ProgrammeListingProps {
 export function CourseListing({ onSelectProgramme, limit, hideFilters = false, showViewAll = false }: ProgrammeListingProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
+  // Backend is the source of truth; the bundled list renders until it loads.
+  const programmes = useLiveProgrammes();
 
   const categories = ["All", ...Array.from(new Set(programmes.map(p => p.category)))];
 

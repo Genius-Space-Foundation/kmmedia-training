@@ -5,7 +5,8 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { CourseModal } from "@/components/modals/CourseModal";
 import dynamic from "next/dynamic";
-import { Programme, programmes } from "@/data/courses";
+import { Programme } from "@/data/courses";
+import { useLiveProgrammes } from "@/lib/useProgrammes";
 import { AnimatePresence, motion } from "framer-motion";
 import { Search, Filter, LayoutGrid, List, Clock, Award, CheckCircle, ArrowRight, BookOpen, Briefcase } from "lucide-react";
 import Image from "next/image";
@@ -29,6 +30,8 @@ export default function ProgrammesPage() {
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
 
   // Filter options derived from data
+  // Backend is the source of truth; the bundled list renders until it loads.
+  const programmes = useLiveProgrammes();
   const categories = ["All", ...Array.from(new Set(programmes.map(p => p.category)))];
   const certificates = ["All", ...Array.from(new Set(programmes.map(p => p.certificate)))];
 
