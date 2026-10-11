@@ -205,11 +205,13 @@ export async function POST(req: Request) {
     });
 
     if (error) {
-      console.error("Resend Error:", error);
-      return NextResponse.json({ error }, { status: 500 });
+      // Email is a notification only — the LMS backend is the source of truth
+      // for applications, so a provider failure must never lose the submission.
+      console.error("Resend Error (application still recorded):", error);
+      return NextResponse.json({ success: true, email_sent: false, error });
     }
 
-    return NextResponse.json({ success: true, data });
+    return NextResponse.json({ success: true, email_sent: true, data });
   } catch (err) {
     console.error("Server Error:", err);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });

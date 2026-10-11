@@ -67,6 +67,24 @@ export const galleryItems: GalleryItem[] = [
     span: "tall",
   },
   {
+    id: "trainer-team-portrait",
+    title: "Our Trainer Team & Faculty Leadership",
+    category: "Campus Life",
+    image: "/images/gallery/trainers1.jpeg",
+    description:
+      "The KM Media trainer team alongside senior faculty leadership — mentors behind the \u201cLearn. Build. Broadcast.\u201d philosophy.",
+    span: "tall",
+  },
+  {
+    id: "trainers-studio-set",
+    title: "Trainers at the Broadcast Studio Set",
+    category: "Studios & Labs",
+    image: "/images/gallery/trainers2.jpeg",
+    description:
+      "KM Media instructors in their signature kit, relaxing on set between studio sessions and live broadcasts.",
+    span: "wide",
+  },
+  {
     id: "campus-coordination",
     title: "Professional Development & Networking",
     category: "Campus Life",

@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { usePaystackPayment } from "react-paystack";
-import { mirrorToLms } from "@/lib/lms";
-import { Programme, programmes } from "@/data/courses";
+import { savePendingApplication } from "@/lib/lms";
+import { Programme } from "@/data/courses";
+import { useLiveProgrammes } from "@/lib/useProgrammes";
 import { X, CheckCircle, CreditCard, Send, User, Mail, Phone, ArrowRight, BookOpen, Calendar, MapPin, Flag, Users, Briefcase, Home, Heart, ShieldHalf, GraduationCap } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -16,6 +16,8 @@ interface ApplicationFlowProps {
 type Step = "form" | "payment" | "success";
 
 export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: ApplicationFlowProps) {
+  // Programme picker is fed by the backend catalogue (source of truth).
+  const programmes = useLiveProgrammes();
   const [step, setStep] = useState<Step>("form");
   const [formData, setFormData] = useState({
     name: "",
@@ -55,6 +57,7 @@ export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: Applicat
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [applicationNumber, setApplicationNumber] = useState<string | null>(null);
   const [activeProgramme, setActiveProgramme] = useState<Programme | null>(selectedProgramme);
 
   useEffect(() => {
@@ -79,57 +82,42 @@ export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: Applicat
 
   const paymentAmount = (isTech || isRobotics) ? 50 : 100;
 
-  const config = {
-    reference: new Date().getTime().toString(),
-    email: formData.email,
-    amount: paymentAmount * 100, /* Amount in pesewas */
-    publicKey: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY as string,
-    currency: "GHS"
-  };
-
-  const initializePayment = usePaystackPayment(config);
-
-  const submitToApi = async (reference: string) => {
+  // Payment is owned by the LMS backend: it resolves the amount from the
+  // programme record and initializes Paystack with its secret key, returning a
+  // hosted checkout URL. We park the form in sessionStorage, then hand the
+  // applicant to Paystack; /apply/callback finishes the submission on return.
+  const startBackendPayment = async () => {
     setIsSubmitting(true);
     setSubmitError(null);
     try {
-      const response = await fetch("/api/applications", {
+      const res = await fetch("/api/lms-payment-intent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          ...formData,
-          course: activeProgramme?.title,
-          reference: reference,
+          program_slug: activeProgramme?.id,
+          full_name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          callback_url: `${window.location.origin}/apply/callback`,
         }),
       });
-
-      if (!response.ok) {
-        throw new Error("Failed to submit application. Please contact support.");
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.authorization_url) {
+        setSubmitError(data.error ?? "Could not start the payment. Please try again.");
+        return;
       }
-
-      // Mirror the application into the LMS (fire-and-forget; never blocks the
-      // public flow — see src/lib/lms.ts).
-      void mirrorToLms({
-        ...formData,
-        course: activeProgramme?.title,
+      savePendingApplication({
+        form: formData,
         program_slug: activeProgramme?.id,
-        reference,
+        course: activeProgramme?.title,
+        reference: data.reference,
       });
-
-      setStep("success");
+      window.location.href = data.authorization_url;
     } catch (err) {
       setSubmitError(err instanceof Error ? err.message : "An unknown error occurred");
     } finally {
       setIsSubmitting(false);
     }
-  };
-
-  const onSuccess = (response: any) => {
-    submitToApi(response.reference);
-  };
-
-  const onPaymentClose = () => {
-    // Handle payment close
   };
 
   const isFormValid = () => {
@@ -953,15 +941,14 @@ export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: Applicat
       </div>
 
       <button
-        onClick={() => {
-          initializePayment({ onSuccess, onClose: onPaymentClose });
-        }}
-        className="w-full py-4 bg-brand-primary hover:bg-brand-secondary text-white rounded-xl font-bold text-lg shadow-xl shadow-brand-primary/20 transition-all flex items-center justify-center gap-2"
+        onClick={startBackendPayment}
+        disabled={isSubmitting}
+        className="w-full py-4 bg-brand-primary hover:bg-brand-secondary disabled:bg-neutral-300 dark:disabled:bg-neutral-700 text-white rounded-xl font-bold text-lg shadow-xl shadow-brand-primary/20 transition-all flex items-center justify-center gap-2"
       >
         Pay with Paystack
         <Send className="w-5 h-5" />
       </button>
-      <p className="text-xs text-neutral-400 italic">This will securely open the Paystack checkout overlay.</p>
+      <p className="text-xs text-neutral-400 italic">You will be securely redirected to Paystack's checkout page to complete payment.</p>
       
       {isSubmitting && (
         <div className="mt-4 p-4 bg-brand-primary/10 text-brand-primary rounded-xl flex items-center justify-center gap-3 animate-pulse">
@@ -988,6 +975,11 @@ export function ApplicationFlow({ selectedProgramme, isOpen, onClose }: Applicat
         <CheckCircle className="w-10 h-10 text-success" />
       </motion.div>
       <h3 className="text-3xl font-extrabold text-brand-text-primary dark:text-white mb-4">Application Received!</h3>
+      {applicationNumber && (
+        <p className="text-sm font-mono text-brand-primary dark:text-neutral-300 mb-2">
+          Application No: {applicationNumber}
+        </p>
+      )}
       <p className="text-brand-text-secondary dark:text-neutral-400 mb-8 max-w-sm mx-auto text-lg leading-relaxed">
         Thank you for choosing KM Media. We have sent a confirmation email to <strong>{formData.email}</strong>. Our admissions team will contact you shortly.
       </p>
