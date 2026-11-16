@@ -24,19 +24,18 @@ export default function ApplyCallbackPage() {
     (async () => {
       const params = new URLSearchParams(window.location.search);
       const status = params.get("status");
-      const reference = params.get("reference") ?? "";
+      const reference = params.get("reference") ?? params.get("trxref") ?? "";
 
-      const pending = takePendingApplication();
-      if (!pending || !reference) {
+      if (!reference) {
         if (!cancelled) {
           setPhase("failed");
-          setMessage("We could not match this return to a pending application. Please try again.");
+          setMessage("We could not find a valid payment reference. Please contact support or try again.");
         }
         return;
       }
 
-      // Applicant closed Paystack without completing payment.
-      if (status && status !== "success") {
+      // Applicant explicitly cancelled or failed Paystack checkout.
+      if (status && status !== "success" && status !== "approved") {
         if (!cancelled) {
           setPhase("failed");
           setMessage("Payment was not completed, so your application was not submitted. You can try again.");
@@ -44,12 +43,22 @@ export default function ApplyCallbackPage() {
         return;
       }
 
-      const result = await mirrorToLms({
-        ...pending.form,
-        course: pending.course,
-        program_slug: pending.program_slug,
-        reference,
-      });
+      const pending = takePendingApplication();
+
+      const payload: Record<string, unknown> = pending
+        ? {
+            ...pending.form,
+            course: pending.course,
+            program_slug: pending.program_slug,
+            reference,
+            payment_reference: reference,
+          }
+        : {
+            reference,
+            payment_reference: reference,
+          };
+
+      const result = await mirrorToLms(payload);
 
       if (cancelled) return;
 
@@ -61,7 +70,11 @@ export default function ApplyCallbackPage() {
         fetch("/api/applications", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...pending.form, course: pending.course, reference }),
+          body: JSON.stringify(
+            pending
+              ? { ...pending.form, course: pending.course, reference }
+              : { reference, name: "Applicant", course: "Training Program", email: "admissions@kmmediatraininginstitute.com", phone: "N/A" },
+          ),
         }).catch((err) => console.warn("Application email notification failed:", err));
       } else {
         setPhase("failed");

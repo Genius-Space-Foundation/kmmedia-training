@@ -25,7 +25,9 @@ export interface PendingApplication {
 
 export function savePendingApplication(pending: PendingApplication): void {
   try {
-    sessionStorage.setItem(PENDING_KEY, JSON.stringify(pending));
+    const serialized = JSON.stringify(pending);
+    sessionStorage.setItem(PENDING_KEY, serialized);
+    localStorage.setItem(PENDING_KEY, serialized);
   } catch (err) {
     console.warn("Could not persist the pending application:", err);
   }
@@ -33,7 +35,7 @@ export function savePendingApplication(pending: PendingApplication): void {
 
 export function takePendingApplication(): PendingApplication | null {
   try {
-    const raw = sessionStorage.getItem(PENDING_KEY);
+    const raw = sessionStorage.getItem(PENDING_KEY) || localStorage.getItem(PENDING_KEY);
     return raw ? (JSON.parse(raw) as PendingApplication) : null;
   } catch {
     return null;
@@ -43,6 +45,7 @@ export function takePendingApplication(): PendingApplication | null {
 export function clearPendingApplication(): void {
   try {
     sessionStorage.removeItem(PENDING_KEY);
+    localStorage.removeItem(PENDING_KEY);
   } catch {
     /* nothing sensible to do */
   }
